@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Search from './Search';
+import ShowingLists from './ShowingLists';
 
 const  CORS_KEY = "https://cors-anywhere.herokuapp.com/"
 const API = "https://www.metaweather.com/api/location/search/?query=a";
-
+// const API_LOCATION = "api/location/search/?query=a";
 
 function App() {
     const [data, setData] = useState([]);
@@ -17,20 +19,10 @@ function App() {
         fetchingData();
     }, [])
 
-    function showingSearchPage() {
-        console.log("I am clicked");
-    }
-
     return (
-        <div>
-            <button onClick={showingSearchPage}>Search for places</button>
-            <div>
-                {data.map(item => {
-                    return (
-                        <div key={item.woeid}>{item.title}</div>
-                    )
-                })}
-            </div>
+        <div className="container">
+            <Search data={data} />
+            <ShowingLists />
         </div>
 
     )
