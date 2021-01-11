@@ -29784,9 +29784,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Search({
-  data
-}) {
+function Search() {
   function showingSearchPage() {
     console.log("I am clicked");
   }
@@ -29795,11 +29793,7 @@ function Search({
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: showingSearchPage
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", null, data.map(item => {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: item.woeid
-    }, item.title);
-  })));
+  }, "Search for places"));
 }
 
 var _default = Search;
@@ -29816,8 +29810,18 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function ShowingLists() {
-  return /*#__PURE__*/_react.default.createElement("h1", null, "Hello world !");
+function ShowingLists({
+  data
+}) {
+  const newData = data.consolidated_weather;
+  console.log(newData);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "showinglists_container"
+  }, newData.map(item => {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: item.id
+    }, item.air_pressure, item.visibility, item.humidity);
+  }));
 }
 
 var _default = ShowingLists;
@@ -29843,13 +29847,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const CORS_KEY = "https://cors-anywhere.herokuapp.com/";
-const API = "https://www.metaweather.com/api/location/search/?query=a"; // const API_LOCATION = "api/location/search/?query=a";
+const API = "https://www.metaweather.com/";
+const WEATHER = "/api/location/2487956/";
 
 function App() {
   const [data, setData] = (0, _react.useState)([]);
 
   async function fetchingData() {
-    const Data = await fetch(CORS_KEY + API);
+    const Data = await fetch(CORS_KEY + API + WEATHER);
     const res = await Data.json();
     setData(res);
   }
@@ -29860,9 +29865,9 @@ function App() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, null), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
     data: data
-  }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, null));
+  }));
 }
 
 var _default = App;
@@ -29907,7 +29912,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57510" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51409" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

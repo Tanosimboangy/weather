@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Search({data}) {
+function Search() {
 
     function showingSearchPage() {
         console.log("I am clicked");
@@ -9,15 +9,6 @@ function Search({data}) {
     return (
         <div className="search_container">
             <button onClick={showingSearchPage}>Search for places</button>
-            <div>
-                {data.map(item => {
-                    return (
-                        <div key={item.woeid}>
-                            {item.title}
-                        </div>
-                    )
-                })}
-            </div>
         </div>
     )
 }

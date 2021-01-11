@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  color: white;
 }
 body h1, body h2, body h3, body h4, body h5, body h6, body p {
   margin: 0;
@@ -14,16 +15,30 @@ body ul {
 body ul li {
   list-style: none;
 }
-body .search_container {
+body .container {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19px;
+  color: #E7E7EB;
+}
+body .container .search_container {
   background: #1E213A;
   padding: 16px;
 }
-body .search_container button {
+body .container .search_container button {
   background: #cbcdd7;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
   border: none;
   outline: none;
+  font-size: 18px;
+}
+body .container .showinglists_container {
+  padding: 16px;
+  background: #100E1D;
+}
+body .container .showinglists_container div {
+  padding: 10px 0;
 }
 
 /*# sourceMappingURL=/weather.80ee2152.css.map */

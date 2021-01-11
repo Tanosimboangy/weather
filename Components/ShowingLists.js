@@ -1,8 +1,20 @@
 import React from 'react'
 
-function ShowingLists() {
+function ShowingLists({data}) {
+    const newData = data.consolidated_weather;
+    console.log(newData);
     return (
-        <h1>Hello world !</h1>
+        <div className="showinglists_container">
+            {newData.map(item => {
+                return (
+                    <div key={item.id}>
+                        {item.air_pressure}
+                        {item.visibility}
+                        {item.humidity}
+                    </div>
+                )
+            })}
+        </div>
     )
 }
 
