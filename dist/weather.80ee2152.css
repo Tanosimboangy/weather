@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 16px;
+}
+body h1, body h2, body h3, body h4, body h5, body h6, body p {
+  margin: 0;
+}
+body a {
+  text-decoration: none;
+}
+body ul {
+  margin: 0;
+  padding: 0;
+}
+body ul li {
+  list-style: none;
+}
+
+/*# sourceMappingURL=/weather.80ee2152.css.map */

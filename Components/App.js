@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const  CORS_KEY = "https://cors-anywhere.herokuapp.com/"
-const API = "https://www.metaweather.com/api/location/search/?query=san";
+const API = "https://www.metaweather.com/api/location/search/?query=a";
 
 
 function App() {
@@ -17,8 +17,22 @@ function App() {
         fetchingData();
     }, [])
 
+    function showingSearchPage() {
+        console.log("I am clicked");
+    }
+
     return (
-        <h1>Hello world !</h1>
+        <div>
+            <button onClick={showingSearchPage}>Search for places</button>
+            <div>
+                {data.map(item => {
+                    return (
+                        <div key={item.woeid}>{item.title}</div>
+                    )
+                })}
+            </div>
+        </div>
+
     )
 }
 

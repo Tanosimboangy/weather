@@ -1,54 +1,30 @@
-import React, { useEffect, useReducer } from 'react';
-const Context = React.createContext();
-// import axios from "axios";
+// import React, { useEffect, useReducer } from 'react';
+// const Context = React.createContext();
 
-const  CORS_KEY = "https://cors-anywhere.herokuapp.com/"
-const API = "https://www.metaweather.com/api/location/search/?query=san";
+// const  CORS_KEY = "https://cors-anywhere.herokuapp.com/"
+// const API = "https://www.metaweather.com/api/location/search/?query=san";
 
-function ContextProvider({children}) {
-    const [state, dispatch] = useReducer((state, action) => {
-        switch(action.type) {
-            case 'FETCHING_DATA': {
-                return {
-                    ...state,
-                    data: action.playload,
-                }
-            }
-            default: {
-                console.error('No actions defined', action.type);
-                break;
-            }
-        }
-        return state;
-    }, {
-      data: [ ],
-      loading: true,
-    })
+// function ContextProvider({children}) {
+//     const [data, setData] = useState([]);
 
-    async function fetchingJobsData() {
-        const fetch = await fetch(CORS_KEY + API);
-        const res = await fetch.json();
-        console.log(res);
+//     async function fetchingData() {
+//         const Data = await fetch(CORS_KEY + API);
+//         const res = await Data.json();
+//         setData(res);
+//     }
 
-        // axios
-        //   .get(CORS_KEY + API)
-        //   .then(res => {
-        //     dispatch({ type: 'FETCHING_DATA', playloads : res.data })
-        //   })
-        //   .catch(error => {
-        //     dispatch({type : "FETCH_FAILED" })
-        //   })
-      }
+//     console.log(data);
 
-      useEffect(() => {
-        fetchingJobsData()
-      }, [])
+//     useEffect(() => {
+//         fetchingData();
+//     }, [])
 
-    return(
-        <Context.Provider 
-            value={{state, dispatch}}>
-                {children}
-        </Context.Provider>
-    )
-}
-export  { Context, ContextProvider }
+
+//     return(
+//         <Context.Provider 
+//             value={{data}}>
+//                 {children}
+//         </Context.Provider>
+//     )
+// }
+// export  { Context, ContextProvider }
