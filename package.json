@@ -15,8 +15,12 @@
   "bugs": {
     "url": "https://github.com/Tanosimboangy/weather/issues"
   },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
   "homepage": "https://github.com/Tanosimboangy/weather#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
