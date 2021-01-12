@@ -29788,14 +29788,33 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function App() {
   const [data, setData] = (0, _react.useState)([]);
-  const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
-  const [inputValue, setInputValue] = (0, _react.useState)('london');
+  const [inputValue, setInputValue] = (0, _react.useState)("london");
+  const Voeid = data.map(item => item);
+  console.log(Voeid);
+  console.log(Voeid.woeid); // const [weatherDetails, setWeatherDetails] = useState([]);
+  // // Fetching the weather details
+  // async function fetchingWeather() {
+  //     let WEATHER_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/44418/`;
+  //     const newData = await fetch(WEATHER_API);
+  //     const response = await newData.json();
+  //     setWeatherDetails(response);
+  // }
+  // useEffect(() => {
+  //     fetchingWeather();
+  // }, [])
+  // function ShowingWeatherDetails(e) {
+  //     e.preventDefault();
+  //     setWeatherDetails(e.target.location.value.consolidated_weather);
+  //     e.target.reset();
+  // }
+  // console.log(weatherDetails);
 
   function Searchitem(e) {
     e.preventDefault();
     setInputValue(e.target.location.value);
     e.target.reset();
-  }
+  } // Fetching the cityname
+
 
   async function fetchingCity() {
     let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/api/location/search/?query=${inputValue}`;
@@ -29807,16 +29826,6 @@ function App() {
   (0, _react.useEffect)(() => {
     fetchingCity();
   }, [inputValue]);
-  console.log(data); // async function fetchingWeather() {
-  //     let WEATHER_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/api/location/${data.woeid}`;
-  //     const newData = await fetch(WEATHER_API);
-  //     const response = await newData.json();
-  //     setData(response);
-  // }
-  // useEffect(() => {
-  //     fetchingWeather();
-  // }, [])
-
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29884,7 +29893,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63546" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60290" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
