@@ -29772,7 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/Search.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29786,22 +29786,42 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function Search({
-  data
-}) {
-  // const [inputValue, setInputValue] = setState("");
-  const [inputValue, setInputValue] = (0, _react.useState)('');
-  console.log(inputValue);
+function App() {
+  const [data, setData] = (0, _react.useState)([]);
+  const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
+  const [inputValue, setInputValue] = (0, _react.useState)('london');
 
   function Searchitem(e) {
     e.preventDefault();
-    console.log("I am clicked");
+    setInputValue(e.target.location.value);
+    e.target.reset();
   }
 
+  async function fetchingCity() {
+    let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/api/location/search/?query=${inputValue}`;
+    const Data = await fetch(NEW_API);
+    const res = await Data.json();
+    setData(res);
+  }
+
+  (0, _react.useEffect)(() => {
+    fetchingCity();
+  }, [inputValue]);
+  console.log(data); // async function fetchingWeather() {
+  //     let WEATHER_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/api/location/${data.woeid}`;
+  //     const newData = await fetch(WEATHER_API);
+  //     const response = await newData.json();
+  //     setData(response);
+  // }
+  // useEffect(() => {
+  //     fetchingWeather();
+  // }, [])
+
   return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    // onClick={showingSearchPage} 
     className: "search"
   }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
     className: "search_form"
@@ -29809,94 +29829,22 @@ function Search({
     onSubmit: Searchitem
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    onChange: e => setInputValue(e.target.value),
-    value: inputValue,
+    name: "location",
     required: true
   }), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
     className: "title"
-  }, data.title)));
-}
-
-var _default = Search;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/ShowingLists.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function ShowingLists({
-  data
-}) {
-  const newData = data.consolidated_weather;
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "showinglists_container"
-  }, newData === undefined ? "" : newData.map(item => {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: item.id
-    }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, item.max_temp), /*#__PURE__*/_react.default.createElement("li", null, item.min_temp)));
-  }));
-}
-
-var _default = ShowingLists;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/App.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Search = _interopRequireDefault(require("./Search"));
-
-var _ShowingLists = _interopRequireDefault(require("./ShowingLists"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-const CORS_KEY = "https://cors-anywhere.herokuapp.com/";
-const API = "https://www.metaweather.com/";
-const WEATHER = "/api/location/2487956/";
-
-function App() {
-  const [data, setData] = (0, _react.useState)([]);
-
-  async function fetchingData() {
-    const Data = await fetch(CORS_KEY + API + WEATHER);
-    const res = await Data.json();
-    setData(res);
-  }
-
-  console.log(data);
-  (0, _react.useEffect)(() => {
-    fetchingData();
-  }, []);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
-    data: data
-  }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
-    data: data
-  }));
+  }, data.map(location => {
+    return /*#__PURE__*/_react.default.createElement("p", {
+      key: location.woeid
+    }, location.title);
+  })))));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Search":"Components/Search.js","./ShowingLists":"Components/ShowingLists.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
