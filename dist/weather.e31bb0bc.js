@@ -29784,8 +29784,15 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Search() {
+function Search({
+  data
+}) {
   function showingSearchPage() {
+    console.log("I am clicked");
+  }
+
+  function Searchitem(e) {
+    e.preventDefault();
     console.log("I am clicked");
   }
 
@@ -29793,7 +29800,16 @@ function Search() {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: showingSearchPage
-  }, "Search for places"));
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "title"
+  }, data.title), /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")));
 }
 
 var _default = Search;
@@ -29814,13 +29830,12 @@ function ShowingLists({
   data
 }) {
   const newData = data.consolidated_weather;
-  console.log(newData);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
-  }, newData.map(item => {
+  }, newData === undefined ? "" : newData.map(item => {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.id
-    }, item.air_pressure, item.visibility, item.humidity);
+    }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, item.max_temp), /*#__PURE__*/_react.default.createElement("li", null, item.min_temp)));
   }));
 }
 
@@ -29865,7 +29880,9 @@ function App() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, null), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
+    data: data
+  }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
     data: data
   }));
 }
@@ -29912,7 +29929,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51409" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63546" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

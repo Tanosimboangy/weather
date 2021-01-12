@@ -23,7 +23,7 @@ function App() {
 
     return (
         <div className="container">
-            <Search />
+            <Search data={data} />
             <ShowingLists data={data} />
         </div>
 

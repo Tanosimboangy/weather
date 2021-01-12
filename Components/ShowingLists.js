@@ -2,15 +2,15 @@ import React from 'react'
 
 function ShowingLists({data}) {
     const newData = data.consolidated_weather;
-    console.log(newData);
     return (
         <div className="showinglists_container">
-            {newData.map(item => {
+            {newData === undefined ? "" :  newData.map(item => {
                 return (
                     <div key={item.id}>
-                        {item.air_pressure}
-                        {item.visibility}
-                        {item.humidity}
+                        <ul>
+                            <li>{item.max_temp}</li>
+                            <li>{item.min_temp}</li>
+                        </ul>
                     </div>
                 )
             })}
