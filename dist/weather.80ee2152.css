@@ -28,30 +28,21 @@ body .container {
 body .container .search_container {
   background: #1E213A;
   padding: 16px;
-  display: flex;
-  flex-direction: column;
 }
-body .container .search_container .title {
-  padding: 16px 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 1px solid blue;
-  display: inline;
-}
-body .container .search_container button {
+body .container .search_container .search {
   background: #cbcdd7;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   font-size: 18px;
-  display: inline;
+  padding: 10px 16px;
 }
-body .container .search_container form {
+body .container .search_container .search_form form {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
 }
-body .container .search_container form input {
+body .container .search_container .search_form form input {
   background: #1E213A;
   border: 1px solid white;
   outline: none;
@@ -59,11 +50,19 @@ body .container .search_container form input {
   color: #b5b8c9;
   margin-right: 20px;
 }
-body .container .search_container form button {
+body .container .search_container .search_form form button {
   background: #3C47E9;
   border: 1px solid white;
   color: white;
-  padding: 10px 16px;
+  padding: 7px 16px;
+}
+body .container .search_container .search_form .title {
+  padding: 16px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid white;
+  background: none;
+  color: white;
 }
 body .container .showinglists_container {
   padding: 16px;

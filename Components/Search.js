@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function Search({data}) {
+    // const [inputValue, setInputValue] = setState("");
+    const [inputValue, setInputValue] = useState('');
+    console.log(inputValue);
 
-    function showingSearchPage() {
-        console.log("I am clicked");
-    }
     function Searchitem(e) {
         e.preventDefault();
         console.log("I am clicked");
@@ -12,12 +12,25 @@ function Search({data}) {
 
     return (
         <div className="search_container">
-            <button onClick={showingSearchPage}>Search for places</button>
-            <button className="title">{data.title}</button>
-            <form onSubmit={Searchitem}>
-                <input type="text" required/>
-                <button type="submit">Search</button>
-            </form>
+            <button 
+                // onClick={showingSearchPage} 
+                className="search">
+                    Search for places
+            </button>
+            <div className="search_form">
+                <form onSubmit={Searchitem}>
+                    <input 
+                        type="text"
+                        onChange={(e) => setInputValue(e.target.value)}
+                        value={inputValue} 
+                        required/>
+                    <button 
+                        type="submit">
+                            Search
+                    </button>
+                </form>
+                <button className="title">{data.title}</button>
+            </div>
         </div>
     )
 }
