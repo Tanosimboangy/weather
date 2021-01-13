@@ -16,25 +16,34 @@ function App() {
     useEffect(() => {
         fetchingCity();
     }, [inputValue])
-    console.log(data[0]);
-    console.log(data[0].woeid);
+
+    useEffect(() => {
+        const n = data !== [] && data.map(data => data.woeid);
+        setWoeid(n[0])
+    }, [data])
+    
+     console.log(Woeid);
+
 
     // Getting the Woeid value from the location
     function getWeather(e) {
         setWoeid(e.target.value)
         console.log(Woeid);
+        
     }
 
     // Fetching the weather details
     async function fetchingWeather() {
-        let WEATHER_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`;
+        let WEATHER_API = Woeid && `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`;
+
+        console.log(WEATHER_API)
         const newData = await fetch(WEATHER_API);
         const response = await newData.json();
         setWeatherDetails(response);
     }
     useEffect(() => {
         fetchingWeather();
-    }, [])
+    }, [data, Woeid])
     // function ShowingWeatherDetails(e) {
     //     e.preventDefault();
     //     setWeatherDetails(e.target.location.value.consolidated_weather);
