@@ -6,8 +6,7 @@
 //     setInputValue,
 //     Searchitem
 // }) {
-    
-//     console.log(inputValue);
+
 
 //     return (
 //         <div className="search_container">
