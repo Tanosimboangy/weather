@@ -16,40 +16,36 @@ function App() {
     useEffect(() => {
         fetchingCity();
     }, [inputValue])
-
-    useEffect(() => {
-        const n = data !== [] && data.map(data => data.woeid);
-        setWoeid(n[0])
-    }, [data])
     
-     console.log(Woeid);
-
-
+    
     // Getting the Woeid value from the location
     function getWeather(e) {
         setWoeid(e.target.value)
-        console.log(Woeid);
-        
     }
-
+    
+    useEffect(() => {
+        const newWoeid = data !== [] && data.map(data => data.woeid);
+        setWoeid(newWoeid[0])
+    }, [data])
+    
     // Fetching the weather details
     async function fetchingWeather() {
         let WEATHER_API = Woeid && `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`;
-
-        console.log(WEATHER_API)
         const newData = await fetch(WEATHER_API);
         const response = await newData.json();
         setWeatherDetails(response);
     }
+
     useEffect(() => {
         fetchingWeather();
     }, [data, Woeid])
-    // function ShowingWeatherDetails(e) {
-    //     e.preventDefault();
-    //     setWeatherDetails(e.target.location.value.consolidated_weather);
-    //     e.target.reset();
-    // }
-    // console.log(weatherDetails);
+
+    function ShowingWeatherDetails(e) {
+        e.preventDefault();
+        if (weatherDetails !== []) {
+            console.log(weatherDetails); 
+        }
+    }
     
     function Searchitem(e) {
         e.preventDefault();
@@ -81,6 +77,7 @@ function App() {
                                 <button
                                     key={location.woeid}
                                     onClick={getWeather}
+                                    onClick={ShowingWeatherDetails}
                                     value={location.woeid}
                                     >
                                         {location.title}
