@@ -5,11 +5,10 @@ function ShowingLists({weatherDetails}) {
 		return weatherDetails;
 	}
 	const newData = weatherDetails !== [ ] ? weatherDetails.consolidated_weather : "";
-	const newItem = newData?.splice(0, 1);
-	console.log(newItem);
+	const newItem = newData?.splice(0, 1);	
 
-	// const actualItem = newData[0];
-	// console.log(actualItem);
+	const actualItem = newData && newData[0];
+	console.log(actualItem);
 
     return (
         <div className="showinglists_container">
@@ -31,10 +30,32 @@ function ShowingLists({weatherDetails}) {
 			<div className="actual_weather">
 				<h2>Today's Highlight</h2>
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>
+						<ul>
+							<li><h3>Wind status</h3>	</li>
+							<li>{actualItem && actualItem.wind_direction} mph</li>
+							<li>{actualItem && actualItem.wind_direction_compass}</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li><h3><label htmlFor="humidity">Humidity</label></h3></li>
+							<li>{actualItem && actualItem.humidity}</li>
+							<li><progress id="humidity" max="100" value={actualItem && actualItem.humidity}>{actualItem && actualItem.humidity}%</progress></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li><h3>Visibility</h3></li>
+							<li>{actualItem && actualItem.visibility} miles</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li><h3>Air pressure</h3></li>
+							<li>{actualItem && actualItem.air_pressure} mb</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
         </div>

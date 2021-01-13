@@ -29793,9 +29793,8 @@ function ShowingLists({
 
   const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
   const newItem = newData?.splice(0, 1);
-  console.log(newItem); // const actualItem = newData[0];
-  // console.log(actualItem);
-
+  const actualItem = newData && newData[0];
+  console.log(actualItem);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
   }, newData === undefined ? "" : newData.map(item => {
@@ -29807,7 +29806,13 @@ function ShowingLists({
     }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "actual_weather"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null))));
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction, " mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "humidity"
+  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.humidity), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
+    id: "humidity",
+    max: "100",
+    value: actualItem && actualItem.humidity
+  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.visibility, " miles"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " mb"))))));
 }
 
 var _default = ShowingLists;
