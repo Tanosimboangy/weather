@@ -29772,7 +29772,88 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/ShowingLists.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ShowingLists({
+  weatherDetails
+}) {
+  if (weatherDetails !== weatherDetails) {
+    return weatherDetails;
+  }
+
+  const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+  const actualData = weatherDetails !== [] ? "" : weatherDetails.map(item => item);
+  console.log(actualData);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "showinglists_container"
+  }, newData === undefined ? "" : newData.map(item => {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: item.id
+    }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, item.max_temp), /*#__PURE__*/_react.default.createElement("li", null, item.min_temp)));
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "actual_weather"
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null))));
+}
+
+var _default = ShowingLists;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Search({
+  data,
+  getWeather,
+  ShowingWeatherDetails,
+  Searchitem
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "search"
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_form"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "title"
+  }, data.map(location => {
+    return /*#__PURE__*/_react.default.createElement("button", {
+      key: location.woeid,
+      onClick: getWeather,
+      onClick: ShowingWeatherDetails,
+      value: location.woeid
+    }, location.title);
+  }))));
+}
+
+var _default = Search;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29781,6 +29862,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _ShowingLists = _interopRequireDefault(require("./ShowingLists"));
+
+var _Search = _interopRequireDefault(require("./Search"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -29827,7 +29914,7 @@ function App() {
     e.preventDefault();
 
     if (weatherDetails !== []) {
-      console.log(weatherDetails);
+      console.log(weatherDetails.consolidated_weather[0]);
     }
   }
 
@@ -29839,35 +29926,19 @@ function App() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "search"
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_form"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "title"
-  }, data.map(location => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      key: location.woeid,
-      onClick: getWeather,
-      onClick: ShowingWeatherDetails,
-      value: location.woeid
-    }, location.title);
-  })))));
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
+    data: data,
+    getWeather: getWeather,
+    ShowingWeatherDetails: ShowingWeatherDetails,
+    Searchitem: Searchitem
+  }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
+    weatherDetails: weatherDetails
+  }));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./ShowingLists":"Components/ShowingLists.js","./Search":"Components/Search.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

@@ -1,35 +1,45 @@
-// import React from 'react';
+import React from 'react';
 
-// function Search({
-//     data,
-//     inputValue,
-//     setInputValue,
-//     Searchitem
-// }) {
+function Search({
+    data,
+    getWeather,
+    ShowingWeatherDetails,
+    Searchitem }) {
 
+    return (
+        <div className="search_container">
+                <button 
+                    className="search">
+                        Search for places
+                </button>
+                <div className="search_form">
+                    <form onSubmit={Searchitem}>
+                        <input 
+                            type="text"
+                            name="location"
+                            required/>
+                        <button 
+                            type="submit">
+                                Search
+                        </button>
+                    </form>
+                    <div className="title">
+                        {data.map(location => {
+                            return (
+                                <button
+                                    key={location.woeid}
+                                    onClick={getWeather}
+                                    onClick={ShowingWeatherDetails}
+                                    value={location.woeid}
+                                    >
+                                        {location.title}
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
+    )
+}
 
-//     return (
-//         <div className="search_container">
-//             <button 
-//                 className="search">
-//                     Search for places
-//             </button>
-//             <div className="search_form">
-//                 <form onSubmit={Searchitem}>
-//                     <input 
-//                         type="text"
-//                         onChange={(e) => setInputValue(e.target.value)}
-//                         value={inputValue} 
-//                         required/>
-//                     <button 
-//                         type="submit">
-//                             Search
-//                     </button>
-//                 </form>
-//                 <button className="title">{data.title}</button>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Search
+export default Search

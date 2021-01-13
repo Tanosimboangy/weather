@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import ShowingLists from './ShowingLists';
+import Search from './Search';
 
 function App() {
     const [data, setData] = useState([]);
@@ -22,7 +24,7 @@ function App() {
     function getWeather(e) {
         setWoeid(e.target.value)
     }
-    
+
     useEffect(() => {
         const newWoeid = data !== [] && data.map(data => data.woeid);
         setWoeid(newWoeid[0])
@@ -35,15 +37,14 @@ function App() {
         const response = await newData.json();
         setWeatherDetails(response);
     }
-
     useEffect(() => {
         fetchingWeather();
     }, [data, Woeid])
 
     function ShowingWeatherDetails(e) {
         e.preventDefault();
-        if (weatherDetails !== []) {
-            console.log(weatherDetails); 
+        if (weatherDetails !== [ ]) {
+            console.log(weatherDetails.consolidated_weather[0]);
         }
     }
     
@@ -55,38 +56,15 @@ function App() {
         
     return (
         <div className="container">
-            <div className="search_container">
-                <button 
-                    className="search">
-                        Search for places
-                </button>
-                <div className="search_form">
-                    <form onSubmit={Searchitem}>
-                        <input 
-                            type="text"
-                            name="location"
-                            required/>
-                        <button 
-                            type="submit">
-                                Search
-                        </button>
-                    </form>
-                    <div className="title">
-                        {data.map(location => {
-                            return (
-                                <button
-                                    key={location.woeid}
-                                    onClick={getWeather}
-                                    onClick={ShowingWeatherDetails}
-                                    value={location.woeid}
-                                    >
-                                        {location.title}
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>
-            </div>
+            <Search
+                data={data}
+                getWeather={getWeather}
+                ShowingWeatherDetails={ShowingWeatherDetails}
+                Searchitem={Searchitem}
+            />
+            <ShowingLists 
+                weatherDetails={weatherDetails} 
+            />
         </div>
 
     )
