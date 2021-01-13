@@ -5,19 +5,27 @@ function ShowingLists({weatherDetails}) {
 		return weatherDetails;
 	}
 	const newData = weatherDetails !== [ ] ? weatherDetails.consolidated_weather : "";
-	const actualData = weatherDetails !== [] ? "" : weatherDetails.map(item => item);
-	console.log(actualData);
+	const newItem = newData?.splice(0, 1);
+	console.log(newItem);
+
+	// const actualItem = newData[0];
+	// console.log(actualItem);
+
     return (
         <div className="showinglists_container">
 			{newData === undefined ? "" :  newData.map(item => {
+				const newMaxTemp = Math.round(item.max_temp);
+				const newMinTemp = Math.round(item.min_temp);
 				return (
-					<div key={item.id}>
-
-						<ul>
-							<li>{item.max_temp}</li>
-							<li>{item.min_temp}</li>
-						</ul>
-					</div>
+					<ul key={item.id} className="wrapper">
+						<li>{item.applicable_date}</li>
+						<li>
+							<ul>
+								<li>{newMaxTemp}</li>
+								<li>{newMinTemp}</li>
+							</ul>
+						</li>
+					</ul>
 				)
 			})}
 			<div className="actual_weather">

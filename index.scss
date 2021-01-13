@@ -24,6 +24,8 @@ body {
         font-size: 18px;
         line-height: 19px;
         color: #E7E7EB;
+        display: flex;
+        flex-direction: column;
         .search_container {
             background: #1E213A;
             padding: 16px;
@@ -35,6 +37,7 @@ body {
                 padding: 10px 16px;
             }
             .search_form {
+                width: 100%;
                 form {
                     // font-family: Raleway;
                     font-style: normal;
@@ -69,10 +72,48 @@ body {
         .showinglists_container {
             padding: 16px;
             background: #100E1D;
+            width: 100%;
+            // display: grid;
+            // grid: repeat(2, 1fr) / auto-flow;
+            .wrapper {
+                // background-color: blueviolet;
+                // max-width: 50%;
+                // margin-bottom: 10px;
+                li:nth-of-type(2) {
+                    ul {
+                        // display: flex;
+                        // flex-direction: row;
+                        // justify-content: space-between;
+                    }
+                }
+            }
             ul {
                 padding: 10px 0;
             }
+            .actual_weather {
+                ul {
+                    background-color: black;
+                }
+            }
         }
 
+    }
+}
+
+
+@media(min-width: 720px) {
+    body {
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .search_container {
+                
+            }
+            .showinglists_container {
+                
+            }
+    
+        }
     }
 }

@@ -24,6 +24,8 @@ body .container {
   font-size: 18px;
   line-height: 19px;
   color: #E7E7EB;
+  display: flex;
+  flex-direction: column;
 }
 body .container .search_container {
   background: #1E213A;
@@ -35,6 +37,9 @@ body .container .search_container .search {
   border: none;
   font-size: 18px;
   padding: 10px 16px;
+}
+body .container .search_container .search_form {
+  width: 100%;
 }
 body .container .search_container .search_form form {
   font-style: normal;
@@ -67,9 +72,21 @@ body .container .search_container .search_form .title {
 body .container .showinglists_container {
   padding: 16px;
   background: #100E1D;
+  width: 100%;
 }
 body .container .showinglists_container ul {
   padding: 10px 0;
+}
+body .container .showinglists_container .actual_weather ul {
+  background-color: black;
+}
+
+@media (min-width: 720px) {
+  body .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 /*# sourceMappingURL=/weather.80ee2152.css.map */
