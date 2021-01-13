@@ -29,17 +29,22 @@ body .container {
 }
 body .container .search_container {
   background: #1E213A;
-  padding: 16px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 body .container .search_container .search {
   background: #cbcdd7;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px 16px;
+  margin-top: 18px;
+  margin-left: 11px;
+  margin-bottom: 76px;
 }
 body .container .search_container .search_form {
   width: 100%;
+  margin-left: 11px;
 }
 body .container .search_container .search_form form {
   font-style: normal;
@@ -70,14 +75,20 @@ body .container .search_container .search_form .title {
   color: white;
 }
 body .container .showinglists_container {
-  padding: 16px;
+  padding-top: 16px;
   background: #100E1D;
   width: 100%;
+}
+body .container .showinglists_container .wrapper_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 body .container .showinglists_container ul {
   padding: 10px 0;
 }
-body .container .showinglists_container .actual_weather ul {
+body .container .showinglists_container .actual_weather {
   background-color: black;
 }
 

@@ -12,41 +12,44 @@ function ShowingLists({weatherDetails}) {
 
     return (
         <div className="showinglists_container">
-			{newData === undefined ? "" :  newData.map(item => {
-				const newMaxTemp = Math.round(item.max_temp);
-				const newMinTemp = Math.round(item.min_temp);
-				return (
-					<ul key={item.id} className="wrapper">
-						<li>{item.applicable_date}</li>
-						<li>
-							<ul>
-								<li>{newMaxTemp}</li>
-								<li>{newMinTemp}</li>
-							</ul>
-						</li>
-					</ul>
-				)
-			})}
+			<div className="wrapper_container">
+				{newData === undefined ? "" :  newData.map(item => {
+					const newMaxTemp = Math.round(item.max_temp);
+					const newMinTemp = Math.round(item.min_temp);
+					return (
+						<ul key={item.id} className="wrapper">
+							<li>{item.applicable_date}</li>
+							<li>
+								<ul>
+									<li>{newMaxTemp}</li>
+									<li>{newMinTemp}</li>
+								</ul>
+							</li>
+						</ul>
+					)
+				})}
+			</div>
 			<div className="actual_weather">
 				<h2>Today's Highlight</h2>
 				<ul>
 					<li>
 						<ul>
 							<li><h3>Wind status</h3>	</li>
-							<li>{actualItem && actualItem.wind_direction} mph</li>
+							<li>{Math.round(actualItem && actualItem.wind_direction)} mph</li>
 							<li>{actualItem && actualItem.wind_direction_compass}</li>
 						</ul>
 					</li>
 					<li>
 						<ul>
 							<li><h3><label htmlFor="humidity">Humidity</label></h3></li>
-							<li>{actualItem && actualItem.humidity}</li>
+							<li>{Math.round(actualItem && actualItem.humidity)}%</li>
 							<li><progress id="humidity" max="100" value={actualItem && actualItem.humidity}>{actualItem && actualItem.humidity}%</progress></li>
 						</ul>
 					</li>
 					<li>
 						<ul>
 							<li><h3>Visibility</h3></li>
+							{/* <li>{Math.round(actualItem && actualItem.visibility)} miles</li> */}
 							<li>{actualItem && actualItem.visibility} miles</li>
 						</ul>
 					</li>

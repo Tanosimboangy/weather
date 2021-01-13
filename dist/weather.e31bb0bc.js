@@ -29797,6 +29797,8 @@ function ShowingLists({
   console.log(actualItem);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "wrapper_container"
   }, newData === undefined ? "" : newData.map(item => {
     const newMaxTemp = Math.round(item.max_temp);
     const newMinTemp = Math.round(item.min_temp);
@@ -29804,11 +29806,11 @@ function ShowingLists({
       key: item.id,
       className: "wrapper"
     }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
-  }), /*#__PURE__*/_react.default.createElement("div", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "actual_weather"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction, " mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.wind_direction), " mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "humidity"
-  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.humidity), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
+  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.humidity), "%"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
     id: "humidity",
     max: "100",
     value: actualItem && actualItem.humidity
@@ -29830,35 +29832,25 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Search({
-  data,
-  getWeather,
-  ShowingWeatherDetails,
-  Searchitem
+  // data,
+  // getWeather,
+  // ShowingWeatherDetails,
+  // Searchitem,
+  weatherDetails
 }) {
+  if (weatherDetails !== weatherDetails) {
+    return weatherDetails;
+  } // const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+  // console.log(newData);
+  // const actualItem = newData && newData[0];
+  // console.log(actualItem);
+
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "search"
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_form"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "title"
-  }, data.map(location => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      key: location.woeid,
-      onClick: getWeather,
-      onClick: ShowingWeatherDetails,
-      value: location.woeid
-    }, location.title);
-  }))));
+  }, "Search for places"));
 }
 
 var _default = Search;
