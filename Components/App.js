@@ -61,6 +61,7 @@ function App() {
                 getWeather={getWeather}
                 ShowingWeatherDetails={ShowingWeatherDetails}
                 Searchitem={Searchitem}
+                weatherDetails={weatherDetails} 
             />
             <ShowingLists 
                 weatherDetails={weatherDetails} 

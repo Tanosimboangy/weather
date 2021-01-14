@@ -29801,8 +29801,17 @@ function ShowingLists({
 
   const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
   const newItem = newData?.splice(0, 1);
-  const actualItem = newData && newData[0];
-  console.log(actualItem);
+  const actualItem = newData && newData[0]; // function DateFormat(date) {
+  // 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
+  // 	const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'] 
+  // 	let dateFormat = new Date(date)
+  // 	let newDay = day[dateFormat.getDay()]
+  // 	let newDate = dateFormat.getDate()
+  // 	let newMonth = month[dateFormat.getMonth()]
+  // 	return `${newDay}, ${newDate} ${newMonth}`
+  // }
+  // DateFormat();
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29817,25 +29826,23 @@ function ShowingLists({
     className: "wrapper_container"
   }, newData === undefined ? "" : newData.map(item => {
     const newMaxTemp = Math.round(item.max_temp);
-    const newMinTemp = Math.round(item.min_temp); // const day = dateFormat(item.applicable_date.toDateString();
-
+    const newMinTemp = Math.round(item.min_temp);
     const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`;
     return /*#__PURE__*/_react.default.createElement("ul", {
       key: item.id,
       className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("li", null, "dateFormat(", item.applicable_date, ", \"dddd, dS\")"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-      src: weatherLogo,
-      alt: "weather logo"
+    }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+      src: weatherLogo
     })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "actual_weather"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, Math.round(actualItem && actualItem.wind_direction)), " mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.wind_direction), "mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "humidity"
-  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, Math.round(actualItem && actualItem.humidity)), "%"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
+  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.humidity), " %"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
     id: "humidity",
     max: "100",
     value: actualItem && actualItem.humidity
-  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualItem && actualItem.air_pressure), " mb"))))))));
+  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.visibility), " miles"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " mb"))))))));
 }
 
 var _default = ShowingLists;
@@ -29853,47 +29860,28 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Search({
-  data,
-  getWeather,
-  ShowingWeatherDetails,
-  Searchitem,
-  weatherDetails
+  weatherDetails // data,
+  // getWeather,
+  // ShowingWeatherDetails,
+  // Searchitem
+
 }) {
   if (weatherDetails !== weatherDetails) {
     console.log(weatherDetails);
     return weatherDetails;
-  } // const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
-  // console.log(newData);
-  // const actualItem = newData && newData[0];
-  // console.log(actualItem);
+  }
 
+  const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+  const actualItem = newData && newData[0]; // const weathedetail = actualItem.map(item => item);
+  // console.log(weathedetail);
+  // console.log(actualItem.weather_state_abbr);
+  // const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem.weather_state_abbr}.svg`
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "search"
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_form"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "form"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "title"
-  }, data.map(location => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      key: location.woeid,
-      onClick: getWeather,
-      onClick: ShowingWeatherDetails,
-      value: location.woeid
-    }, location.title);
-  })))));
+  }, "Search for places"));
 }
 
 var _default = Search;
@@ -29975,7 +29963,8 @@ function App() {
     data: data,
     getWeather: getWeather,
     ShowingWeatherDetails: ShowingWeatherDetails,
-    Searchitem: Searchitem
+    Searchitem: Searchitem,
+    weatherDetails: weatherDetails
   }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
     weatherDetails: weatherDetails
   }));
@@ -30023,7 +30012,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51590" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

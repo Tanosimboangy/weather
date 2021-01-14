@@ -27,11 +27,6 @@ body button {
   outline: none;
 }
 body .container {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 19px;
-  color: #E7E7EB;
   display: flex;
   flex-direction: column;
 }
@@ -152,6 +147,7 @@ body .container .showinglists_container .sub_container .actual_weather ul li ul 
 body .container .showinglists_container .sub_container .actual_weather ul li ul li:first-of-type h3 {
   font-size: 16px;
   line-height: 19px;
+  padding-top: 16px;
 }
 body .container .showinglists_container .sub_container .actual_weather ul li ul li:nth-of-type(2) {
   font-size: 30px;
@@ -174,7 +170,6 @@ body .container .showinglists_container .sub_container .actual_weather ul li ul 
   body .container .showinglists_container .sub_container {
     max-width: 700px;
     margin: auto;
-    padding: 0;
   }
 }
 

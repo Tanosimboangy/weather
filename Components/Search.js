@@ -1,21 +1,24 @@
 import React from 'react';
 
 function Search({
-    data,
-    getWeather,
-    ShowingWeatherDetails,
-    Searchitem,
-    weatherDetails
+    weatherDetails,
+    // data,
+    // getWeather,
+    // ShowingWeatherDetails,
+    // Searchitem
 }) {
 
     if (weatherDetails !== weatherDetails) {
         console.log(weatherDetails);
         return weatherDetails;
     }
-    // const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
-    // console.log(newData);
-    // const actualItem = newData && newData[0];
-	// console.log(actualItem);
+    const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+    const actualItem = newData && newData[0];
+    // const weathedetail = actualItem.map(item => item);
+    // console.log(weathedetail);
+    // console.log(actualItem.weather_state_abbr);
+    // const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem.weather_state_abbr}.svg`
+
 
     return (
         <div className="search_container">
@@ -23,7 +26,7 @@ function Search({
                     className="search">
                         Search for places
                 </button>
-                <div className="search_form">
+                {/* <div className="search_form">
                     <div className="form">
                         <form onSubmit={Searchitem}>
                             <input 
@@ -50,7 +53,10 @@ function Search({
                             })}
                         </div>
                     </div>
-                </div>
+                </div> */}
+                {/* <div><img src={weatherPicture} alt="weater picture"/></div> */}
+                {/* <div>{actualItem.the_temp}</div> */}
+                {/* <div>{actualItem.weather_state_name}</div> */}
             </div>
     )
 }

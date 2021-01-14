@@ -13,7 +13,17 @@ function ShowingLists({weatherDetails}) {
 	const newItem = newData?.splice(0, 1);	
 
 	const actualItem = newData && newData[0];
-	console.log(actualItem);
+
+	// function DateFormat(date) {
+	// 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
+	// 	const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'] 
+	// 	let dateFormat = new Date(date)
+	// 	let newDay = day[dateFormat.getDay()]
+	// 	let newDate = dateFormat.getDate()
+	// 	let newMonth = month[dateFormat.getMonth()]
+	// 	return `${newDay}, ${newDate} ${newMonth}`
+	// }
+	// DateFormat();
 
     return (
 		<>
@@ -27,12 +37,12 @@ function ShowingLists({weatherDetails}) {
 						{newData === undefined ? "" :  newData.map(item => {
 							const newMaxTemp = Math.round(item.max_temp);
 							const newMinTemp = Math.round(item.min_temp);
-							// const day = dateFormat(item.applicable_date.toDateString();
 							const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`
 							return (
 								<ul key={item.id} className="wrapper">
-									<li>dateFormat({item.applicable_date}, "dddd, dS")</li>
-									<li><img src={weatherLogo} alt="weather logo"/></li>
+									<li>{item.applicable_date}</li>
+									{/* <li>DateFormat({item.applicable_date})</li> */}
+									<li><img src={weatherLogo} /></li>
 									<li>
 										<ul>
 											<li>{newMaxTemp}</li>
@@ -49,28 +59,27 @@ function ShowingLists({weatherDetails}) {
 							<li>
 								<ul>
 									<li><h3>Wind status</h3>	</li>
-									<li><span>{Math.round(actualItem && actualItem.wind_direction)}</span> mph</li>
+									<li>{Math.round(actualItem && actualItem.wind_direction)}mph</li>
 									<li>{actualItem && actualItem.wind_direction_compass}</li>
 								</ul>
 							</li>
 							<li>
 								<ul>
 									<li><h3><label htmlFor="humidity">Humidity</label></h3></li>
-									<li><span>{Math.round(actualItem && actualItem.humidity)}</span>%</li>
+									<li>{Math.round(actualItem && actualItem.humidity)} %</li>
 									<li><progress id="humidity" max="100" value={actualItem && actualItem.humidity}>{actualItem && actualItem.humidity}%</progress></li>
 								</ul>
 							</li>
 							<li>
 								<ul>
 									<li><h3>Visibility</h3></li>
-									{/* <li><span>{actualItem && actualItem.visibility}</span> miles</li> */}
-									{/* <li><span>{Math.round(actualItem && actualItem.visibility)}</span> miles</li> */}
+									<li>{Math.round(actualItem && actualItem.visibility)} miles</li>
 								</ul>
 							</li>
 							<li>
 								<ul>
 									<li><h3>Air pressure</h3></li>
-									<li><span>{actualItem && actualItem.air_pressure}</span> mb</li>
+									<li>{actualItem && actualItem.air_pressure} mb</li>
 								</ul>
 							</li>
 						</ul>
