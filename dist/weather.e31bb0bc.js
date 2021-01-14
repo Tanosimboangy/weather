@@ -29795,9 +29795,15 @@ function ShowingLists({
   const newItem = newData?.splice(0, 1);
   const actualItem = newData && newData[0];
   console.log(actualItem);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
   }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "degree_button"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, "Celcius"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, "Faraneit")), /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper_container"
   }, newData === undefined ? "" : newData.map(item => {
     const newMaxTemp = Math.round(item.max_temp);
@@ -29814,7 +29820,7 @@ function ShowingLists({
     id: "humidity",
     max: "100",
     value: actualItem && actualItem.humidity
-  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.visibility, " miles"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " mb"))))));
+  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.visibility, " miles"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " mb")))))));
 }
 
 var _default = ShowingLists;
@@ -29832,10 +29838,10 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Search({
-  // data,
-  // getWeather,
-  // ShowingWeatherDetails,
-  // Searchitem,
+  data,
+  getWeather,
+  ShowingWeatherDetails,
+  Searchitem,
   weatherDetails
 }) {
   if (weatherDetails !== weatherDetails) {
@@ -29850,7 +29856,28 @@ function Search({
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "search"
-  }, "Search for places"));
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_form"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "form"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "title"
+  }, data.map(location => {
+    return /*#__PURE__*/_react.default.createElement("button", {
+      key: location.woeid,
+      onClick: getWeather,
+      onClick: ShowingWeatherDetails,
+      value: location.woeid
+    }, location.title);
+  })))));
 }
 
 var _default = Search;
@@ -29980,7 +30007,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63233" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62971" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

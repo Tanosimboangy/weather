@@ -39,6 +39,8 @@ body {
                 margin-top: 18px;
                 margin-left: 11px;
                 margin-bottom: 76px;
+                margin-right: 319px;
+                width: 160px;
             }
             .search_form {
                 width: 100%;
@@ -56,12 +58,13 @@ body {
                         padding: 10px 16px;
                         color: #b5b8c9;
                         margin-right: 20px;
+                        width: 50%;
                     }
                     button {
                         background: #3C47E9;
                         border: 1px solid white;
                         color: white;
-                        padding: 7px 16px;
+                        padding: 10px 16px;
                     }
                 }
                 .title {
@@ -75,33 +78,44 @@ body {
             }
         }
         .showinglists_container {
-            padding-top: 16px;
             background: #100E1D;
             width: 100%;
             // display: grid;
             // grid: repeat(2, 1fr) / auto-flow;
+            .degree_button {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                padding: 16px;
+                button:nth-of-type(1) {
+                    margin-right: 10px;
+                }
+            }
             .wrapper_container {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                padding: 25px;
                 .wrapper {
-                    // background-color: blueviolet;
-                    // max-width: 50%;
-                    // margin-bottom: 10px;
+                    max-width: 50%;
+                    margin-bottom: 10px;
                     li:nth-of-type(2) {
                         ul {
-                            // display: flex;
-                            // flex-direction: row;
-                            // justify-content: space-between;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
                         }
                     }
                 }
             }
             ul {
-                padding: 10px 0;
+                background: #1E213A;
+                padding: 10px;
+                margin-bottom: 10px;
             }
             .actual_weather {
+                padding: 16px;
                 background-color: black;
             }
         }
