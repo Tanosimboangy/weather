@@ -57,7 +57,7 @@ body {
                         outline: none;
                         padding: 10px 16px;
                         color: #b5b8c9;
-                        margin-right: 20px;
+                        margin-right: 4%;
                         width: 40%;
                     }
                     button {
@@ -81,45 +81,99 @@ body {
         .showinglists_container {
             background: #100E1D;
             width: 100%;
-            // display: grid;
-            // grid: repeat(2, 1fr) / auto-flow;
-            .degree_button {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                padding: 16px;
-                button:nth-of-type(1) {
-                    margin-right: 10px;
+            .sub_container {
+                .degree_button {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    padding-top: 42px;
+                    padding-bottom: 60px;
+                    button:nth-of-type(1) {
+                        margin-right: 10px;
+                    }
                 }
-            }
-            .wrapper_container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                padding: 25px;
-                .wrapper {
-                    max-width: 50%;
-                    margin-bottom: 10px;
-                    li:last-of-type {
-                        ul {
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: space-between;
-                            padding-bottom: 0;
-                            margin-bottom: 0;
+                .wrapper_container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    padding-bottom: 72px;
+                    .wrapper {
+                        width: 15%;
+                        // height: ;
+                        margin-bottom: 10px;
+                        background: #1E213A;
+                        padding: 10px;
+                        li:last-of-type {
+                            ul {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                padding-bottom: 0;
+                                margin-bottom: 0;
+                            }
                         }
                     }
                 }
-            }
-            ul {
-                background: #1E213A;
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-            .actual_weather {
-                padding: 16px;
-                background-color: black;
+                // .details_weather {
+                //     padding: 10px;
+                //     margin-bottom: 10px;
+                //     li {
+                //         background: #1E213A;
+                //         max-width: 50%;
+                //         height: 100px;
+                //     }
+                // }
+                .actual_weather {
+                    h2 {                        
+                        // font-family: Raleway;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 24px;
+                        line-height: 28px;
+                        color: #E7E7EB;
+                        padding-bottom: 32px;
+                    }
+                    ul {
+                        li {
+                            background: #1E213A;
+                            width: 100%;
+                            margin: auto;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin-bottom: 10px;
+                            ul {
+                                li {
+                                    width: 109px;
+                                    padding: 0;
+                                    margin-bottom: 10px;
+                                    color: #E7E7EB;
+                                    // font-family: Raleway;
+                                    font-style: normal;
+                                    font-weight: 500;
+                                }
+                                li:first-of-type {
+                                    h3 {
+                                        font-size: 16px;
+                                        line-height: 19px;
+                                    }
+                                }
+                                li:nth-of-type(2) {
+                                    font-size: 30px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: baseline;
+                                    span {
+                                        font-weight: bold;
+                                        font-size: 64px;
+                                        line-height: 75px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -137,6 +191,10 @@ body {
                 
             }
             .showinglists_container {
+                .sub_container {
+                    max-width: 700px;
+                margin: auto;
+                }
                 
             }
     
