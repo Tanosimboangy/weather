@@ -29860,11 +29860,11 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Search({
-  weatherDetails // data,
-  // getWeather,
-  // ShowingWeatherDetails,
-  // Searchitem
-
+  weatherDetails,
+  data,
+  getWeather,
+  ShowingWeatherDetails,
+  Searchitem
 }) {
   if (weatherDetails !== weatherDetails) {
     console.log(weatherDetails);
@@ -29881,7 +29881,28 @@ function Search({
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "search"
-  }, "Search for places"));
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_form"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "form"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "title"
+  }, data.map(location => {
+    return /*#__PURE__*/_react.default.createElement("button", {
+      key: location.woeid,
+      onClick: getWeather,
+      onClick: ShowingWeatherDetails,
+      value: location.woeid
+    }, location.title);
+  })))));
 }
 
 var _default = Search;

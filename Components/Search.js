@@ -2,10 +2,10 @@ import React from 'react';
 
 function Search({
     weatherDetails,
-    // data,
-    // getWeather,
-    // ShowingWeatherDetails,
-    // Searchitem
+    data,
+    getWeather,
+    ShowingWeatherDetails,
+    Searchitem
 }) {
 
     if (weatherDetails !== weatherDetails) {
@@ -26,7 +26,7 @@ function Search({
                     className="search">
                         Search for places
                 </button>
-                {/* <div className="search_form">
+                <div className="search_form">
                     <div className="form">
                         <form onSubmit={Searchitem}>
                             <input 
@@ -53,7 +53,7 @@ function Search({
                             })}
                         </div>
                     </div>
-                </div> */}
+                </div>
                 {/* <div><img src={weatherPicture} alt="weater picture"/></div> */}
                 {/* <div>{actualItem.the_temp}</div> */}
                 {/* <div>{actualItem.weather_state_name}</div> */}
