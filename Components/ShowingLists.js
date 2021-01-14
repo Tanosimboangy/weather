@@ -19,11 +19,14 @@ function ShowingLists({weatherDetails}) {
 				</div>
 				<div className="wrapper_container">
 					{newData === undefined ? "" :  newData.map(item => {
+						console.log(item);
 						const newMaxTemp = Math.round(item.max_temp);
 						const newMinTemp = Math.round(item.min_temp);
 						return (
 							<ul key={item.id} className="wrapper">
 								<li>{item.applicable_date}</li>
+								<li><img src={item.weather_state_abbr} alt=""/></li>
+								{/* <li><img src={item.weather_state_abbr} alt=""/></li> */}
 								<li>
 									<ul>
 										<li>{newMaxTemp}</li>
@@ -54,7 +57,6 @@ function ShowingLists({weatherDetails}) {
 						<li>
 							<ul>
 								<li><h3>Visibility</h3></li>
-								{/* <li>{Math.round(actualItem && actualItem.visibility)} miles</li> */}
 								<li>{actualItem && actualItem.visibility} miles</li>
 							</ul>
 						</li>

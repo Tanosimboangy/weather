@@ -61,7 +61,7 @@ body .container .search_container .search_form form input {
   padding: 10px 16px;
   color: #b5b8c9;
   margin-right: 20px;
-  width: 50%;
+  width: 40%;
 }
 body .container .search_container .search_form form button {
   background: #3C47E9;
@@ -76,6 +76,7 @@ body .container .search_container .search_form .title {
   border: 1px solid white;
   background: none;
   color: white;
+  max-width: 53%;
 }
 body .container .showinglists_container {
   background: #100E1D;
@@ -101,10 +102,12 @@ body .container .showinglists_container .wrapper_container .wrapper {
   max-width: 50%;
   margin-bottom: 10px;
 }
-body .container .showinglists_container .wrapper_container .wrapper li:nth-of-type(2) ul {
+body .container .showinglists_container .wrapper_container .wrapper li:last-of-type ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 body .container .showinglists_container ul {
   background: #1E213A;

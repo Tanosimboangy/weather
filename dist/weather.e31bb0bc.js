@@ -29806,12 +29806,16 @@ function ShowingLists({
   }, "Faraneit")), /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper_container"
   }, newData === undefined ? "" : newData.map(item => {
+    console.log(item);
     const newMaxTemp = Math.round(item.max_temp);
     const newMinTemp = Math.round(item.min_temp);
     return /*#__PURE__*/_react.default.createElement("ul", {
       key: item.id,
       className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
+    }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+      src: item.weather_state_abbr,
+      alt: ""
+    })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "actual_weather"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.wind_direction), " mph"), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
