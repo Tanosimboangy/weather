@@ -82,6 +82,10 @@ body .container .showinglists_container {
   background: #100E1D;
   width: 100%;
 }
+body .container .showinglists_container .sub_container {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 body .container .showinglists_container .sub_container .degree_button {
   display: flex;
   flex-direction: row;
@@ -162,6 +166,7 @@ body .container .showinglists_container .sub_container .actual_weather ul li ul 
   body .container .showinglists_container .sub_container {
     max-width: 700px;
     margin: auto;
+    padding: 0;
   }
 }
 

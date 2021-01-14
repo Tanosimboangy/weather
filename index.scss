@@ -82,6 +82,8 @@ body {
             background: #100E1D;
             width: 100%;
             .sub_container {
+                padding-right: 10px;
+                padding-left: 10px;
                 .degree_button {
                     display: flex;
                     flex-direction: row;
@@ -187,13 +189,14 @@ body {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            .search_container {
+            // .search_container {
                 
-            }
+            // }
             .showinglists_container {
                 .sub_container {
                     max-width: 700px;
-                margin: auto;
+                    margin: auto;
+                    padding: 0;
                 }
                 
             }
