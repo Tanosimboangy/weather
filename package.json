@@ -21,6 +21,9 @@
   "homepage": "https://github.com/Tanosimboangy/weather#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "date-fns": "^2.16.1",
+    "dateformat": "^4.4.1",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

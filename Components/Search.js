@@ -9,6 +9,7 @@ function Search({
 }) {
 
     if (weatherDetails !== weatherDetails) {
+        console.log(weatherDetails);
         return weatherDetails;
     }
     // const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";

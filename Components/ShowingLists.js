@@ -1,4 +1,9 @@
-import React from 'react'
+import React from 'react';
+// import { format } from 'date-fns'	;
+// import {moment} from 'moment';
+import dateFormat from 'dateformat';
+
+
 
 function ShowingLists({weatherDetails}) {
 	if (weatherDetails !== weatherDetails) {
@@ -20,14 +25,14 @@ function ShowingLists({weatherDetails}) {
 					</div>
 					<div className="wrapper_container">
 						{newData === undefined ? "" :  newData.map(item => {
-							console.log(item);
 							const newMaxTemp = Math.round(item.max_temp);
 							const newMinTemp = Math.round(item.min_temp);
+							// const day = dateFormat(item.applicable_date.toDateString();
+							const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`
 							return (
 								<ul key={item.id} className="wrapper">
-									<li>{item.applicable_date}</li>
-									{/* <li><img src={item.weather_state_abbr} alt=""/></li> */}
-									<li><img src="/static/img/weather/png/${item.weather_state_abbr}" alt=""/></li>
+									<li>dateFormat({item.applicable_date}, "dddd, dS")</li>
+									<li><img src={weatherLogo} alt="weather logo"/></li>
 									<li>
 										<ul>
 											<li>{newMaxTemp}</li>
@@ -59,7 +64,7 @@ function ShowingLists({weatherDetails}) {
 								<ul>
 									<li><h3>Visibility</h3></li>
 									{/* <li><span>{actualItem && actualItem.visibility}</span> miles</li> */}
-									<li><span>{Math.round(actualItem && actualItem.visibility)}</span> miles</li>
+									{/* <li><span>{Math.round(actualItem && actualItem.visibility)}</span> miles</li> */}
 								</ul>
 							</li>
 							<li>

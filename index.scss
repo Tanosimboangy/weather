@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "Raleway_Regular";
+    src: local(Raleway_Regular),
+      url(./fonts/Raleway_Regular.woff2) format("woff2"),
+      url(./fonts/Raleway_Regular.woff) format("woff"),
+}
+@font-face {
+    font-family: "Raleway_Bold";
+    src: local(Raleway_Bold),
+      url(./fonts/Raleway_Bold.woff2) format("woff2"),
+      url(./fonts/Raleway_Bold.woff) format("woff"),
+}
+
 body {
     margin: 0;
     color: white;
@@ -102,7 +115,6 @@ body {
                     padding-bottom: 72px;
                     .wrapper {
                         width: 15%;
-                        // height: ;
                         margin-bottom: 10px;
                         background: #1E213A;
                         padding: 10px;
@@ -194,6 +206,8 @@ body {
             // }
             .showinglists_container {
                 .sub_container {
+                    // padding-right: 10px;
+                    // padding-left: 10px;
                     max-width: 700px;
                     margin: auto;
                     padding: 0;
