@@ -54,6 +54,7 @@ function ShowingLists({weatherDetails}) {
 					</div>
 					<div className="actual_weather">
 						<h2>Today's Highlight</h2>
+						
 						<ul>
 							<li>
 								<ul>

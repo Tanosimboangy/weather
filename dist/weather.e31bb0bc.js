@@ -29867,16 +29867,13 @@ function Search({
   Searchitem
 }) {
   if (weatherDetails !== weatherDetails) {
-    console.log(weatherDetails);
     return weatherDetails;
   }
 
   const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
-  const actualItem = newData && newData[0]; // const weathedetail = actualItem.map(item => item);
-  // console.log(weathedetail);
-  // console.log(actualItem.weather_state_abbr);
-  // const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem.weather_state_abbr}.svg`
-
+  const actualItem = newData && newData[0];
+  const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem && actualItem.weather_state_abbr}.svg`;
+  console.log(weatherDetails);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("button", {
