@@ -29772,11 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"node_modules/dateformat/lib/dateformat.js":[function(require,module,exports) {
-var define;
-var global = arguments[3];
-"use strict";function _typeof(obj){"@babel/helpers - typeof";if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"){_typeof=function _typeof(obj){return typeof obj}}else{_typeof=function _typeof(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj}}return _typeof(obj)}(function(global){var _arguments=arguments;var dateFormat=function(){var token=/d{1,4}|D{3,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LlopSZWN]|"[^"]*"|'[^']*'/g;var timezone=/\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g;var timezoneClip=/[^-+\dA-Z]/g;return function(date,mask,utc,gmt){if(_arguments.length===1&&kindOf(date)==="string"&&!/\d/.test(date)){mask=date;date=undefined}date=date||date===0?date:new Date;if(!(date instanceof Date)){date=new Date(date)}if(isNaN(date)){throw TypeError("Invalid date")}mask=String(dateFormat.masks[mask]||mask||dateFormat.masks["default"]);var maskSlice=mask.slice(0,4);if(maskSlice==="UTC:"||maskSlice==="GMT:"){mask=mask.slice(4);utc=true;if(maskSlice==="GMT:"){gmt=true}}var _=function _(){return utc?"getUTC":"get"};var _d=function d(){return date[_()+"Date"]()};var D=function D(){return date[_()+"Day"]()};var _m=function m(){return date[_()+"Month"]()};var y=function y(){return date[_()+"FullYear"]()};var _H=function H(){return date[_()+"Hours"]()};var _M=function M(){return date[_()+"Minutes"]()};var _s=function s(){return date[_()+"Seconds"]()};var _L=function L(){return date[_()+"Milliseconds"]()};var _o=function o(){return utc?0:date.getTimezoneOffset()};var _W=function W(){return getWeek(date)};var _N=function N(){return getDayOfWeek(date)};var flags={d:function d(){return _d()},dd:function dd(){return pad(_d())},ddd:function ddd(){return dateFormat.i18n.dayNames[D()]},DDD:function DDD(){return getDayName({y:y(),m:_m(),D:D(),_:_(),dayName:dateFormat.i18n.dayNames[D()],short:true})},dddd:function dddd(){return dateFormat.i18n.dayNames[D()+7]},DDDD:function DDDD(){return getDayName({y:y(),m:_m(),D:D(),_:_(),dayName:dateFormat.i18n.dayNames[D()+7]})},m:function m(){return _m()+1},mm:function mm(){return pad(_m()+1)},mmm:function mmm(){return dateFormat.i18n.monthNames[_m()]},mmmm:function mmmm(){return dateFormat.i18n.monthNames[_m()+12]},yy:function yy(){return String(y()).slice(2)},yyyy:function yyyy(){return pad(y(),4)},h:function h(){return _H()%12||12},hh:function hh(){return pad(_H()%12||12)},H:function H(){return _H()},HH:function HH(){return pad(_H())},M:function M(){return _M()},MM:function MM(){return pad(_M())},s:function s(){return _s()},ss:function ss(){return pad(_s())},l:function l(){return pad(_L(),3)},L:function L(){return pad(Math.floor(_L()/10))},t:function t(){return _H()<12?dateFormat.i18n.timeNames[0]:dateFormat.i18n.timeNames[1]},tt:function tt(){return _H()<12?dateFormat.i18n.timeNames[2]:dateFormat.i18n.timeNames[3]},T:function T(){return _H()<12?dateFormat.i18n.timeNames[4]:dateFormat.i18n.timeNames[5]},TT:function TT(){return _H()<12?dateFormat.i18n.timeNames[6]:dateFormat.i18n.timeNames[7]},Z:function Z(){return gmt?"GMT":utc?"UTC":(String(date).match(timezone)||[""]).pop().replace(timezoneClip,"").replace(/GMT\+0000/g,"UTC")},o:function o(){return(_o()>0?"-":"+")+pad(Math.floor(Math.abs(_o())/60)*100+Math.abs(_o())%60,4)},p:function p(){return(_o()>0?"-":"+")+pad(Math.floor(Math.abs(_o())/60),2)+":"+pad(Math.floor(Math.abs(_o())%60),2)},S:function S(){return["th","st","nd","rd"][_d()%10>3?0:(_d()%100-_d()%10!=10)*_d()%10]},W:function W(){return _W()},N:function N(){return _N()}};return mask.replace(token,function(match){if(match in flags){return flags[match]()}return match.slice(1,match.length-1)})}}();dateFormat.masks={default:"ddd mmm dd yyyy HH:MM:ss",shortDate:"m/d/yy",paddedShortDate:"mm/dd/yyyy",mediumDate:"mmm d, yyyy",longDate:"mmmm d, yyyy",fullDate:"dddd, mmmm d, yyyy",shortTime:"h:MM TT",mediumTime:"h:MM:ss TT",longTime:"h:MM:ss TT Z",isoDate:"yyyy-mm-dd",isoTime:"HH:MM:ss",isoDateTime:"yyyy-mm-dd'T'HH:MM:sso",isoUtcDateTime:"UTC:yyyy-mm-dd'T'HH:MM:ss'Z'",expiresHeaderFormat:"ddd, dd mmm yyyy HH:MM:ss Z"};dateFormat.i18n={dayNames:["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],monthNames:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","January","February","March","April","May","June","July","August","September","October","November","December"],timeNames:["a","p","am","pm","A","P","AM","PM"]};var pad=function pad(val,len){val=String(val);len=len||2;while(val.length<len){val="0"+val}return val};var getDayName=function getDayName(_ref){var y=_ref.y,m=_ref.m,D=_ref.D,_=_ref._,dayName=_ref.dayName,_ref$short=_ref["short"],_short=_ref$short===void 0?false:_ref$short;var today=new Date;var yesterday=new Date;yesterday.setDate(yesterday[_+"Date"]()-1);var tomorrow=new Date;tomorrow.setDate(tomorrow[_+"Date"]()+1);var today_D=function today_D(){return today[_+"Day"]()};var today_m=function today_m(){return today[_+"Month"]()};var today_y=function today_y(){return today[_+"FullYear"]()};var yesterday_D=function yesterday_D(){return yesterday[_+"Day"]()};var yesterday_m=function yesterday_m(){return yesterday[_+"Month"]()};var yesterday_y=function yesterday_y(){return yesterday[_+"FullYear"]()};var tomorrow_D=function tomorrow_D(){return tomorrow[_+"Day"]()};var tomorrow_m=function tomorrow_m(){return tomorrow[_+"Month"]()};var tomorrow_y=function tomorrow_y(){return tomorrow[_+"FullYear"]()};if(today_y()===y&&today_m()===m&&today_D()===D){return _short?"Tdy":"Today"}else if(yesterday_y()===y&&yesterday_m()===m&&yesterday_D()===D){return _short?"Ysd":"Yesterday"}else if(tomorrow_y()===y&&tomorrow_m()===m&&tomorrow_D()===D){return _short?"Tmw":"Tomorrow"}return dayName};var getWeek=function getWeek(date){var targetThursday=new Date(date.getFullYear(),date.getMonth(),date.getDate());targetThursday.setDate(targetThursday.getDate()-(targetThursday.getDay()+6)%7+3);var firstThursday=new Date(targetThursday.getFullYear(),0,4);firstThursday.setDate(firstThursday.getDate()-(firstThursday.getDay()+6)%7+3);var ds=targetThursday.getTimezoneOffset()-firstThursday.getTimezoneOffset();targetThursday.setHours(targetThursday.getHours()-ds);var weekDiff=(targetThursday-firstThursday)/(864e5*7);return 1+Math.floor(weekDiff)};var getDayOfWeek=function getDayOfWeek(date){var dow=date.getDay();if(dow===0){dow=7}return dow};var kindOf=function kindOf(val){if(val===null){return"null"}if(val===undefined){return"undefined"}if(_typeof(val)!=="object"){return _typeof(val)}if(Array.isArray(val)){return"array"}return{}.toString.call(val).slice(8,-1).toLowerCase()};if(typeof define==="function"&&define.amd){define(function(){return dateFormat})}else if((typeof exports==="undefined"?"undefined":_typeof(exports))==="object"){module.exports=dateFormat}else{global.dateFormat=dateFormat}})(void 0);
-},{}],"Components/ShowingLists.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/future_weather.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29786,22 +29782,81 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _dateformat = _interopRequireDefault(require("dateformat"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function future_weather({
+  weatherDetails
+}) {
+  const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+  const newItem = newData?.splice(0, 1);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "wrapper_container"
+  }, newData && newData.map(item => {
+    const newMaxTemp = Math.round(item.max_temp);
+    const newMinTemp = Math.round(item.min_temp);
+    const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`;
+    return /*#__PURE__*/_react.default.createElement("ul", {
+      key: item.id,
+      className: "wrapper"
+    }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+      src: weatherLogo
+    })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
+  }));
+}
+
+var _default = future_weather;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/actual_weather.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { format } from 'date-fns'	;
-// import {moment} from 'moment';
+function actual_weather({
+  weatherDetails
+}) {
+  const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
+  const actualItem = newData && newData[0];
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "actual_weather"
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.wind_direction), " ", /*#__PURE__*/_react.default.createElement("span", null, "mph")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "humidity"
+  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.humidity), " ", /*#__PURE__*/_react.default.createElement("span", null, "%")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
+    id: "humidity",
+    max: "100",
+    value: actualItem && actualItem.humidity
+  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.visibility), " ", /*#__PURE__*/_react.default.createElement("span", null, "miles")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " ", /*#__PURE__*/_react.default.createElement("span", null, "mb"))))));
+}
+
+var _default = actual_weather;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/ShowingLists.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _future_weather = _interopRequireDefault(require("./future_weather"));
+
+var _actual_weather = _interopRequireDefault(require("./actual_weather"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import dateFormat from 'dateformat';
 function ShowingLists({
   weatherDetails
 }) {
-  if (weatherDetails !== weatherDetails) {
-    return weatherDetails;
-  }
-
-  const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
-  const newItem = newData?.splice(0, 1);
-  const actualItem = newData && newData[0]; // function DateFormat(date) {
+  // function DateFormat(date) {
   // 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
   // 	const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'] 
   // 	let dateFormat = new Date(date)
@@ -29811,7 +29866,6 @@ function ShowingLists({
   // 	return `${newDay}, ${newDate} ${newMonth}`
   // }
   // DateFormat();
-
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "showinglists_container"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29822,32 +29876,16 @@ function ShowingLists({
     type: "button"
   }, "Celcius"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button"
-  }, "Faraneit")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "wrapper_container"
-  }, newData === undefined ? "" : newData.map(item => {
-    const newMaxTemp = Math.round(item.max_temp);
-    const newMinTemp = Math.round(item.min_temp);
-    const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`;
-    return /*#__PURE__*/_react.default.createElement("ul", {
-      key: item.id,
-      className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("li", null, item.applicable_date), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-      src: weatherLogo
-    })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, newMaxTemp), /*#__PURE__*/_react.default.createElement("li", null, newMinTemp))));
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "actual_weather"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Today's Highlight"), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), " "), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.wind_direction), " ", /*#__PURE__*/_react.default.createElement("span", null, "mph")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.wind_direction_compass))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "humidity"
-  }, "Humidity"))), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.humidity), " ", /*#__PURE__*/_react.default.createElement("span", null, "%")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("progress", {
-    id: "humidity",
-    max: "100",
-    value: actualItem && actualItem.humidity
-  }, actualItem && actualItem.humidity, "%")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility")), /*#__PURE__*/_react.default.createElement("li", null, Math.round(actualItem && actualItem.visibility), " ", /*#__PURE__*/_react.default.createElement("span", null, "miles")))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air pressure")), /*#__PURE__*/_react.default.createElement("li", null, actualItem && actualItem.air_pressure, " ", /*#__PURE__*/_react.default.createElement("span", null, "mb")))))))));
+  }, "Faraneit")), /*#__PURE__*/_react.default.createElement(_future_weather.default, {
+    weatherDetails: weatherDetails
+  }), /*#__PURE__*/_react.default.createElement(_actual_weather.default, {
+    weatherDetails: weatherDetails
+  }))));
 }
 
 var _default = ShowingLists;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","dateformat":"node_modules/dateformat/lib/dateformat.js"}],"Components/Search.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./future_weather":"Components/future_weather.js","./actual_weather":"Components/actual_weather.js"}],"Components/Form.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29856,6 +29894,38 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Form({
+  Searchitem,
+  CloseToggle
+}) {
+  return /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit",
+    onClick: CloseToggle
+  }, "Search"));
+}
+
+var _default = Form;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Form = _interopRequireDefault(require("./Form"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29872,39 +29942,57 @@ function Search({
 
   const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
   const actualItem = newData && newData[0];
-  const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem && actualItem.weather_state_abbr}.svg`;
-  console.log(weatherDetails);
+  const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem !== undefined ? actualItem.weather_state_abbr : ""}.svg`;
+
+  function OpenToggle() {
+    const menuDrawer = document.querySelector(".menu-drawer");
+    menuDrawer.className += " open";
+  }
+
+  ;
+
+  function CloseToggle() {
+    const menuDrawer = document.querySelector(".menu-drawer");
+    menuDrawer.classList.remove("open");
+  }
+
+  ;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "search"
+    onClick: OpenToggle,
+    className: "toggle-menu search"
   }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "menu-drawer"
+  }, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    Searchitem: Searchitem,
+    CloseToggle: CloseToggle
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "search_form"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "form"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "title"
   }, data.map(location => {
     return /*#__PURE__*/_react.default.createElement("button", {
       key: location.woeid,
-      onClick: getWeather,
-      onClick: ShowingWeatherDetails,
+      onClick: getWeather // onClick={ShowingWeatherDetails}
+      ,
       value: location.woeid
     }, location.title);
-  })))));
+  })))), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "actual_weather_details"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: weatherPicture,
+    alt: "weater picture"
+  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualItem && actualItem.the_temp)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualItem && actualItem.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualItem && actualItem.applicable_date))));
 }
 
 var _default = Search;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Form":"Components/Form.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29959,15 +30047,12 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchingWeather();
-  }, [data, Woeid]);
-
-  function ShowingWeatherDetails(e) {
-    e.preventDefault();
-
-    if (weatherDetails !== []) {
-      console.log(weatherDetails.consolidated_weather[0]);
-    }
-  }
+  }, [data, Woeid]); // function ShowingWeatherDetails(e) {
+  //     e.preventDefault();
+  //     if (weatherDetails !== [ ]) {
+  //         console.log(weatherDetails.consolidated_weather[0]);
+  //     }
+  // }
 
   function Searchitem(e) {
     e.preventDefault();
@@ -29979,8 +30064,8 @@ function App() {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement(_Search.default, {
     data: data,
-    getWeather: getWeather,
-    ShowingWeatherDetails: ShowingWeatherDetails,
+    getWeather: getWeather // ShowingWeatherDetails={ShowingWeatherDetails}
+    ,
     Searchitem: Searchitem,
     weatherDetails: weatherDetails
   }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {

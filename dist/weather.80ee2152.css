@@ -41,7 +41,46 @@ body .container .search_container {
   font-weight: 500;
   color: #616475;
 }
-body .container .search_container .search {
+body .container .search_container .container .toggle-menu {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  float: left;
+  z-index: 1000;
+}
+body .container .search_container .container .toggle-menu i {
+  position: absolute;
+  display: block;
+  height: 2px;
+  background: #0094FC;
+  width: 30px;
+  left: 0px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+body .container .search_container .container .container {
+  position: relative;
+  overflow: hidden;
+  height: 9000px;
+  z-index: 1;
+}
+body .container .search_container .container .menu-drawer {
+  max-width: 25%;
+  background: #1E213A;
+  height: 900px;
+  position: absolute;
+  left: -550px;
+  top: 0;
+  transition: right linear 0.2s;
+  padding: 50px;
+}
+body .container .search_container .container .open {
+  left: 0px;
+  transition: right linear 0.2s;
+}
+body .container .search_container .container .search {
   color: #E7E7EB;
   background: #6E707A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -49,7 +88,7 @@ body .container .search_container .search {
   padding: 10px 16px;
   margin-top: 18px;
   margin-left: 11px;
-  margin-bottom: 76px;
+  margin-bottom: 109px;
   margin-right: 319px;
   width: 162px;
 }
@@ -80,6 +119,39 @@ body .container .search_container .search_form .title {
   border: 1px solid white;
   background: none;
   max-width: 70%;
+}
+body .container .search_container .actual_weather_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .container .search_container .actual_weather_details li {
+  font-family: "Raleway_Regular";
+  font-style: normal;
+}
+body .container .search_container .actual_weather_details li:first-of-type img {
+  max-width: 220px;
+  padding-bottom: 87px;
+}
+body .container .search_container .actual_weather_details li:nth-of-type(2) p {
+  font-weight: 500;
+  font-size: 144px;
+  line-height: 169px;
+  color: #E7E7EB;
+  padding-bottom: 87px;
+}
+body .container .search_container .actual_weather_details li:nth-of-type(3) span {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  color: #A09FB1;
+}
+body .container .search_container .actual_weather_details li:nth-of-type(4) p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869D;
+  padding-bottom: 32px;
 }
 body .container .showinglists_container {
   background: #100E1D;

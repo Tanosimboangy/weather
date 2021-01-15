@@ -41,12 +41,12 @@ function App() {
         fetchingWeather();
     }, [data, Woeid])
 
-    function ShowingWeatherDetails(e) {
-        e.preventDefault();
-        if (weatherDetails !== [ ]) {
-            console.log(weatherDetails.consolidated_weather[0]);
-        }
-    }
+    // function ShowingWeatherDetails(e) {
+    //     e.preventDefault();
+    //     if (weatherDetails !== [ ]) {
+    //         console.log(weatherDetails.consolidated_weather[0]);
+    //     }
+    // }
     
     function Searchitem(e) {
         e.preventDefault();
@@ -59,7 +59,7 @@ function App() {
             <Search
                 data={data}
                 getWeather={getWeather}
-                ShowingWeatherDetails={ShowingWeatherDetails}
+                // ShowingWeatherDetails={ShowingWeatherDetails}
                 Searchitem={Searchitem}
                 weatherDetails={weatherDetails} 
             />
