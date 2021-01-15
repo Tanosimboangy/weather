@@ -5,7 +5,7 @@ import Actual_weather from './actual_weather';
 
 
 
-function ShowingLists({weatherDetails}) {
+function ShowingLists({weatherDetails, ConvertedToCelcius, ConvertedToFaraneit}) {
 	
 	// function DateFormat(date) {
 	// 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
@@ -23,8 +23,17 @@ function ShowingLists({weatherDetails}) {
 			<div className="showinglists_container">
 				<div className="sub_container">
 					<div className="degree_button">
-						<button type="button">Celcius</button>
-						<button type="button">Faraneit</button>
+						<button 
+							type="button"
+							onClick={ConvertedToCelcius}
+						>
+							Celcius</button>
+						<button 
+							type="button"
+							onClick={ConvertedToFaraneit}
+						>
+							Faraneit
+						</button>
 					</div>
 					<Future_weather weatherDetails={weatherDetails} />
 					<Actual_weather weatherDetails={weatherDetails} />

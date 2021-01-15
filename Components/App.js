@@ -7,6 +7,15 @@ function App() {
     const [inputValue, setInputValue] = useState("london");
     const [Woeid, setWoeid] = useState("");
     const [weatherDetails, setWeatherDetails] = useState([]);
+    const [converted, setConverted] = useState(false);
+
+    function ConvertedToCelcius() {
+        setConverted(false);
+    }
+    
+    function ConvertedToFaraneit() {
+        setConverted(true)
+    }
 
     // Fetching the cityname
     async function fetchingCity() {
@@ -40,13 +49,6 @@ function App() {
     useEffect(() => {
         fetchingWeather();
     }, [data, Woeid])
-
-    // function ShowingWeatherDetails(e) {
-    //     e.preventDefault();
-    //     if (weatherDetails !== [ ]) {
-    //         console.log(weatherDetails.consolidated_weather[0]);
-    //     }
-    // }
     
     function Searchitem(e) {
         e.preventDefault();
@@ -59,12 +61,15 @@ function App() {
             <Search
                 data={data}
                 getWeather={getWeather}
-                // ShowingWeatherDetails={ShowingWeatherDetails}
                 Searchitem={Searchitem}
+                converted={converted}
                 weatherDetails={weatherDetails} 
             />
             <ShowingLists 
                 weatherDetails={weatherDetails} 
+                converted={converted}
+                ConvertedToCelcius={ConvertedToCelcius} 
+                ConvertedToFaraneit={ConvertedToFaraneit} 
             />
         </div>
 

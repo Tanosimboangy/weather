@@ -29854,7 +29854,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import dateFormat from 'dateformat';
 function ShowingLists({
-  weatherDetails
+  weatherDetails,
+  ConvertedToCelcius,
+  ConvertedToFaraneit
 }) {
   // function DateFormat(date) {
   // 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
@@ -29873,9 +29875,11 @@ function ShowingLists({
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "degree_button"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button"
+    type: "button",
+    onClick: ConvertedToCelcius
   }, "Celcius"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button"
+    type: "button",
+    onClick: ConvertedToFaraneit
   }, "Faraneit")), /*#__PURE__*/_react.default.createElement(_future_weather.default, {
     weatherDetails: weatherDetails
   }), /*#__PURE__*/_react.default.createElement(_actual_weather.default, {
@@ -29933,13 +29937,9 @@ function Search({
   weatherDetails,
   data,
   getWeather,
-  ShowingWeatherDetails,
-  Searchitem
+  Searchitem,
+  converted
 }) {
-  if (weatherDetails !== weatherDetails) {
-    return weatherDetails;
-  }
-
   const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
   const actualItem = newData && newData[0];
   const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem !== undefined ? actualItem.weather_state_abbr : ""}.svg`;
@@ -29957,37 +29957,32 @@ function Search({
   }
 
   ;
+  const temperature = converted === true ? actualItem && Math.round(actualItem.the_temp) * 9 / 5 + 32 : actualItem && Math.round(actualItem.the_temp);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search_container"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    onClick: OpenToggle,
-    className: "toggle-menu search"
+    className: "toggle-menu search",
+    onClick: OpenToggle
   }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
     className: "menu-drawer"
   }, /*#__PURE__*/_react.default.createElement(_Form.default, {
     Searchitem: Searchitem,
     CloseToggle: CloseToggle
   }))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_form"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "form"
-  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "title"
   }, data.map(location => {
     return /*#__PURE__*/_react.default.createElement("button", {
       key: location.woeid,
-      onClick: getWeather // onClick={ShowingWeatherDetails}
-      ,
+      onClick: getWeather,
       value: location.woeid
     }, location.title);
-  })))), /*#__PURE__*/_react.default.createElement("ul", {
+  })), /*#__PURE__*/_react.default.createElement("ul", {
     className: "actual_weather_details"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: weatherPicture,
-    alt: "weater picture"
-  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualItem && actualItem.the_temp)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualItem && actualItem.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualItem && actualItem.applicable_date))));
+    src: weatherPicture
+  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, temperature)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualItem && actualItem.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualItem && actualItem.applicable_date))));
 }
 
 var _default = Search;
@@ -30016,7 +30011,17 @@ function App() {
   const [data, setData] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)("london");
   const [Woeid, setWoeid] = (0, _react.useState)("");
-  const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]); // Fetching the cityname
+  const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
+  const [converted, setConverted] = (0, _react.useState)(false);
+
+  function ConvertedToCelcius() {
+    setConverted(false);
+  }
+
+  function ConvertedToFaraneit() {
+    setConverted(true);
+  } // Fetching the cityname
+
 
   async function fetchingCity() {
     let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/api/location/search/?query=${inputValue}`;
@@ -30047,12 +30052,7 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchingWeather();
-  }, [data, Woeid]); // function ShowingWeatherDetails(e) {
-  //     e.preventDefault();
-  //     if (weatherDetails !== [ ]) {
-  //         console.log(weatherDetails.consolidated_weather[0]);
-  //     }
-  // }
+  }, [data, Woeid]);
 
   function Searchitem(e) {
     e.preventDefault();
@@ -30064,12 +30064,15 @@ function App() {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement(_Search.default, {
     data: data,
-    getWeather: getWeather // ShowingWeatherDetails={ShowingWeatherDetails}
-    ,
+    getWeather: getWeather,
     Searchitem: Searchitem,
+    converted: converted,
     weatherDetails: weatherDetails
   }), /*#__PURE__*/_react.default.createElement(_ShowingLists.default, {
-    weatherDetails: weatherDetails
+    weatherDetails: weatherDetails,
+    converted: converted,
+    ConvertedToCelcius: ConvertedToCelcius,
+    ConvertedToFaraneit: ConvertedToFaraneit
   }));
 }
 
@@ -30115,7 +30118,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60422" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51878" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

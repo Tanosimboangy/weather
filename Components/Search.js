@@ -1,17 +1,8 @@
 import React from 'react';
 import Form from './Form';
 
-function Search({
-    weatherDetails,
-    data,
-    getWeather,
-    ShowingWeatherDetails,
-    Searchitem
-}) {
+function Search({weatherDetails, data, getWeather, Searchitem, converted}) {
 
-    if (weatherDetails !== weatherDetails) {
-        return weatherDetails;
-    }
     const newData = weatherDetails !== [] ? weatherDetails.consolidated_weather : "";
     const actualItem = newData && newData[0];
     const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem !== undefined ? actualItem.weather_state_abbr : ""}.svg`;
@@ -26,39 +17,32 @@ function Search({
         menuDrawer.classList.remove("open");
     };
 
+    const temperature = converted === true ? actualItem && Math.round(actualItem.the_temp) * 9/5 + 32 : actualItem && Math.round(actualItem.the_temp);
     return (
         <div className="search_container">
                 <div className="container">
-                    <button 
-                        onClick={OpenToggle}
-                        className="toggle-menu search">
-                        Search for places
-                    </button>
+                    <button className="toggle-menu search" onClick={OpenToggle}>Search for places</button>
                     <div className="menu-drawer">
                         <Form Searchitem={Searchitem} CloseToggle={CloseToggle}/>
                     </div>
                 </div>
-                <div className="search_form">
-                    <div className="form">
-                        <div className="title">
-                            {data.map(location => {
-                                return (
-                                    <button
-                                        key={location.woeid}
-                                        onClick={getWeather}
-                                        // onClick={ShowingWeatherDetails}
-                                        value={location.woeid}
-                                        >
-                                            {location.title}
-                                    </button>
-                                )
-                            })}
-                        </div>
-                    </div>
+                <div className="title">
+                    {data.map(location => {
+                        return (
+                            <button
+                                key={location.woeid}
+                                onClick={getWeather}
+                                value={location.woeid}
+                                >
+                                    {location.title}
+                            </button>
+                        )
+                    })}
                 </div>
                 <ul className="actual_weather_details">
-                    <li><img src={weatherPicture} alt="weater picture"/></li>
-                    <li><p>{actualItem && actualItem.the_temp}</p></li>
+                    {/* °C , °F*/}
+                    <li><img src={weatherPicture} /></li>
+                    <li><p>{temperature}</p></li>
                     <li><span>{actualItem && actualItem.weather_state_name}</span></li>
                     <li><p>{actualItem && actualItem.applicable_date}</p></li>
                 </ul>
