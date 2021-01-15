@@ -31,39 +31,34 @@ body {
         outline: none;
     }
     .container {
-        // font-family: Raleway;
-        // font-style: normal;
-        // font-weight: 500;
-        // font-size: 18px;
-        // line-height: 19px;
-        // color: #E7E7EB;
         display: flex;
         flex-direction: column;
         .search_container {
             background: #1E213A;
             overflow-y: scroll;
             overflow-x: hidden;
+            font-family: "Raleway_Rgular";
+            font-style: normal;
+            font-size: 16px;
+            line-height: 19px;
+            font-weight: 500;
+            color: #616475;
             .search {
-                background: #cbcdd7;
+                color: #E7E7EB;
+                background: #6E707A;
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 border: none;
-                font-size: 16px;
                 padding: 10px 16px;
                 margin-top: 18px;
                 margin-left: 11px;
                 margin-bottom: 76px;
                 margin-right: 319px;
-                width: 160px;
+                width: 162px;
             }
             .search_form {
                 width: 100%;
                 margin-left: 11px;
                 form {
-                    // font-family: Raleway;
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 16px;
-                    line-height: 19px;
                     input {
                         background: #1E213A;
                         border: 1px solid white;
@@ -71,29 +66,30 @@ body {
                         padding: 10px 16px;
                         color: #b5b8c9;
                         margin-right: 4%;
-                        width: 40%;
+                        width: 37%;
+                        margin-bottom: 10px;
                     }
                     button {
+                        font-weight: 600;
                         background: #3C47E9;
                         border: 1px solid white;
-                        color: white;
                         padding: 10px 16px;
                     }
                 }
                 .title {
-                    padding: 16px 20px;
+                    padding: 10px 16px;
                     margin-top: 20px;
                     margin-bottom: 20px;
                     border: 1px solid white;
                     background: none;
-                    color: white;
-                    max-width: 53%;
+                    max-width: 70%;
                 }
             }
         }
         .showinglists_container {
             background: #100E1D;
             width: 100%;
+            font-style: normal;
             .sub_container {
                 padding-right: 10px;
                 padding-left: 10px;
@@ -105,6 +101,13 @@ body {
                     padding-bottom: 60px;
                     button:nth-of-type(1) {
                         margin-right: 10px;
+                    }
+                    button {
+                        font-family: "Raleway_bold";
+                        font-weight: bold;
+                        font-size: 18px;
+                        line-height: 21px;
+                        color: #110E3C;
                     }
                 }
                 .wrapper_container {
@@ -118,6 +121,13 @@ body {
                         margin-bottom: 10px;
                         background: #1E213A;
                         padding: 10px;
+                        li {
+                            font-family: "Raleway_Regular";
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 19px;
+                            color: #E7E7EB;
+                        }
                         li:last-of-type {
                             ul {
                                 display: flex;
@@ -129,19 +139,9 @@ body {
                         }
                     }
                 }
-                // .details_weather {
-                //     padding: 10px;
-                //     margin-bottom: 10px;
-                //     li {
-                //         background: #1E213A;
-                //         max-width: 50%;
-                //         height: 100px;
-                //     }
-                // }
                 .actual_weather {
-                    h2 {                        
-                        // font-family: Raleway;
-                        font-style: normal;
+                    h2 {
+                        font-family: "Raleway_Bold";
                         font-weight: bold;
                         font-size: 24px;
                         line-height: 28px;
@@ -162,27 +162,31 @@ body {
                                     width: 109px;
                                     padding: 0;
                                     margin-bottom: 10px;
+                                    font-family: "Raleway_Regular";
+                                    font-size: 16px;
+                                    line-height: 19px;
                                     color: #E7E7EB;
-                                    // font-family: Raleway;
-                                    font-style: normal;
-                                    font-weight: 500;
                                 }
                                 li:first-of-type {
                                     h3 {
-                                        font-size: 16px;
-                                        line-height: 19px;
-                                        padding-top: 16px;
+                                        font-family: "Raleway_Regular";
+                                        font-weight: 500;
+                                        padding-top: 22px;
                                     }
                                 }
                                 li:nth-of-type(2) {
-                                    font-size: 30px;
+                                    font-family: "Raleway_Bold";
+                                    font-weight: bold;
+                                    font-size: 64px;
+                                    line-height: 75px;
+                                    color: #E7E7EB;
                                     display: flex;
                                     flex-direction: row;
                                     align-items: baseline;
                                     span {
-                                        font-weight: bold;
-                                        font-size: 64px;
-                                        line-height: 75px;
+                                        font-weight: normal;
+                                        font-size: 30px;
+                                        line-height: 40px;
                                     }
                                 }
                             }
@@ -202,13 +206,24 @@ body {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            // .search_container {
-                
-            // }
             .showinglists_container {
                 .sub_container {
                     max-width: 700px;
                     margin: auto;
+                    .actual_weather {
+                        ul {
+                            display: grid;
+                            grid-template-columns: 1fr 40px;
+                            li {
+                                width: 50%;
+                                ul {
+                                    li {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 
             }
