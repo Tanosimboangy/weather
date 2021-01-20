@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
     const [city, setCity] = useState([]);
-    const [inputValue, setInputValue] = useState("san francisco");
-    const [Woeid, setWoeid] = useState("");
+    const [inputValue, setInputValue] = useState("london");
+    const [Woeid, setWoeid] = useState(44418);
     const [weatherDetails, setWeatherDetails] = useState([]);
     
     let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=london`;
@@ -16,24 +16,27 @@ function App() {
         const res = await Data.json();
         setCity(res);
     }
-    
+
     useEffect(() => {
         fetchingCity();
-        const newCity = city.map(item => item);
-        console.log(newCity);
-        setWoeid(newCity.woeid);
     }, [inputValue]);
-    
-    // Fetching the weather details
-    async function fetchingWeather() {
-        const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-        const response = await newData.json();
-        setWeatherDetails(response);
-    }
-    
-    function getWeather() {
-        fetchingWeather();
-    }
+        
+    // // Fetching the weather details
+    // async function fetchingWeather() {
+    //     const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+    //     const response = await newData.json();
+    //     setWeatherDetails(response);
+    // }
+
+    useEffect(() => {
+        const newWoeid = city && city.map(item => {
+            return (
+                setWoeid(item.woeid)
+            )
+        });   
+    }, [city])
+
+    console.log(Woeid);
 
 
     // function ConvertedToCelcius() {
@@ -52,7 +55,7 @@ function App() {
         
     return (
         <div className="container">
-            <button type="button" onClick={getWeather}>get weather</button>
+            {/* <button type="button" onClick>get weather</button> */}
             {/* <Search
                 data={data}
                 getWeather={getWeather}

@@ -29790,8 +29790,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // import Search from './Search';
 function App() {
   const [city, setCity] = (0, _react.useState)([]);
-  const [inputValue, setInputValue] = (0, _react.useState)("san francisco");
-  const [Woeid, setWoeid] = (0, _react.useState)("");
+  const [inputValue, setInputValue] = (0, _react.useState)("london");
+  const [Woeid, setWoeid] = (0, _react.useState)(44418);
   const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
   let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=london`; // Fetching the cityname
 
@@ -29803,20 +29803,19 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchingCity();
-    const newCity = city.map(item => item);
-    console.log(newCity);
-    setWoeid(newCity.woeid);
-  }, [inputValue]); // Fetching the weather details
+  }, [inputValue]); // // Fetching the weather details
+  // async function fetchingWeather() {
+  //     const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+  //     const response = await newData.json();
+  //     setWeatherDetails(response);
+  // }
 
-  async function fetchingWeather() {
-    const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-    const response = await newData.json();
-    setWeatherDetails(response);
-  }
-
-  function getWeather() {
-    fetchingWeather();
-  } // function ConvertedToCelcius() {
+  (0, _react.useEffect)(() => {
+    const newWoeid = city && city.map(item => {
+      return setWoeid(item.woeid);
+    });
+  }, [city]);
+  console.log(Woeid); // function ConvertedToCelcius() {
   //     setConverted(false);
   // }
   // function ConvertedToFaraneit() {
@@ -29828,13 +29827,9 @@ function App() {
   //     e.target.reset();
   // }
 
-
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: getWeather
-  }, "get weather"));
+  });
 }
 
 var _default = App; // const [actualWeather, setActualWeather] = useState();
@@ -29883,7 +29878,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54278" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56104" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
