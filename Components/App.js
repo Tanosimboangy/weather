@@ -4,11 +4,19 @@ import React, { useState, useEffect } from 'react';
 
 function App() {
     const [city, setCity] = useState([]);
+    const [cityTitle, setCityTitle] = useState([]);
     const [inputValue, setInputValue] = useState("london");
     const [Woeid, setWoeid] = useState(44418);
     const [weatherDetails, setWeatherDetails] = useState([]);
+    const [actualWeatherDetails, setActualWeatherDetails] = useState([]);
     
-    let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=london`;
+    let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`;
+
+    function Searchitem(e) {
+        e.preventDefault();
+        setInputValue(e.target.location.value)
+        e.target.reset();
+    }
     
     // Fetching the cityname
     async function fetchingCity() {
@@ -20,24 +28,26 @@ function App() {
     useEffect(() => {
         fetchingCity();
     }, [inputValue]);
-        
-    // // Fetching the weather details
-    // async function fetchingWeather() {
-    //     const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-    //     const response = await newData.json();
-    //     setWeatherDetails(response);
-    // }
 
+    // Accessing the woied from the city location and store it in a state
     useEffect(() => {
         const newWoeid = city && city.map(item => {
             return (
-                setWoeid(item.woeid)
+                setWoeid(item.woeid),
+                setCityTitle(item.title)
             )
         });   
     }, [city])
+        
+    // Fetching the weather details
+    async function fetchingWeather() {
+        const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+        const response = await newData.json();
+        setWeatherDetails(response);
+        setActualWeatherDetails(weatherDetails.consolidated_weather?.[0])
+    }
 
-    console.log(Woeid);
-
+    console.log(actualWeatherDetails);
 
     // function ConvertedToCelcius() {
     //     setConverted(false);
@@ -55,7 +65,11 @@ function App() {
         
     return (
         <div className="container">
-            {/* <button type="button" onClick>get weather</button> */}
+            <form onSubmit={Searchitem}>
+                <input type="text" name="location" required/>
+             <button type="submit">Search</button>
+         </form>
+        <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
             {/* <Search
                 data={data}
                 getWeather={getWeather}

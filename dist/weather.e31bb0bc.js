@@ -29790,10 +29790,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // import Search from './Search';
 function App() {
   const [city, setCity] = (0, _react.useState)([]);
+  const [cityTitle, setCityTitle] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)("london");
   const [Woeid, setWoeid] = (0, _react.useState)(44418);
   const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
-  let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=london`; // Fetching the cityname
+  const [actualWeatherDetails, setActualWeatherDetails] = (0, _react.useState)([]);
+  let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`;
+
+  function Searchitem(e) {
+    e.preventDefault();
+    setInputValue(e.target.location.value);
+    e.target.reset();
+  } // Fetching the cityname
+
 
   async function fetchingCity() {
     const Data = await fetch(NEW_API);
@@ -29803,19 +29812,22 @@ function App() {
 
   (0, _react.useEffect)(() => {
     fetchingCity();
-  }, [inputValue]); // // Fetching the weather details
-  // async function fetchingWeather() {
-  //     const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-  //     const response = await newData.json();
-  //     setWeatherDetails(response);
-  // }
+  }, [inputValue]); // Accessing the woied from the city location and store it in a state
 
   (0, _react.useEffect)(() => {
     const newWoeid = city && city.map(item => {
-      return setWoeid(item.woeid);
+      return setWoeid(item.woeid), setCityTitle(item.title);
     });
-  }, [city]);
-  console.log(Woeid); // function ConvertedToCelcius() {
+  }, [city]); // Fetching the weather details
+
+  async function fetchingWeather() {
+    const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+    const response = await newData.json();
+    setWeatherDetails(response);
+    setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
+  }
+
+  console.log(actualWeatherDetails); // function ConvertedToCelcius() {
   //     setConverted(false);
   // }
   // function ConvertedToFaraneit() {
@@ -29829,7 +29841,18 @@ function App() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  });
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: fetchingWeather
+  }, cityTitle));
 }
 
 var _default = App; // const [actualWeather, setActualWeather] = useState();
@@ -29878,7 +29901,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56104" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53249" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
