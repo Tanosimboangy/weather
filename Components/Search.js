@@ -1,9 +1,8 @@
-// import React, {useState} from 'react';
+// import React from 'react';
 // import Form from './Form';
 
-// function Search({weatherDetails, data, getWeather, Searchitem, converted}) {
-//     const actualItem = newData && newData[0];
-//     const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualItem !== undefined ? actualItem.weather_state_abbr : ""}.svg`;
+// function Search(city, Searchitem, converted, actualWeatherDetails) {
+//     const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualWeatherDetails !== undefined ? actualWeatherDetails.weather_state_abbr : ""}.svg`;
 
 //     function OpenToggle() {
 //         const menuDrawer = document.querySelector(".menu-drawer");
@@ -15,7 +14,7 @@
 //         menuDrawer.classList.remove("open");
 //     };
 
-//     const temperature = converted === true ? actualItem && Math.round(actualItem.the_temp) * 9/5 + 32 : actualItem && Math.round(actualItem.the_temp);
+//     const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9/5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
 //     {/* °C , °F*/}
 //     return (
 //         <div className="search_container">
@@ -26,7 +25,7 @@
 //                     </div>
 //                 </div>
 //                 <div className="title">
-//                     {data.map(location => {
+//                     {city && city.map(location => {
 //                         return (
 //                             <button
 //                                 key={location.woeid}
@@ -41,8 +40,8 @@
 //                 <ul className="actual_weather_details">
 //                     <li><img src={weatherPicture} /></li>
 //                     <li><p>{temperature}</p></li>
-//                     <li><span>{actualItem && actualItem.weather_state_name}</span></li>
-//                     <li><p>{actualItem && actualItem.applicable_date}</p></li>
+//                     <li><span>{actualWeatherDetails && actualWeatherDetails.weather_state_name}</span></li>
+//                     <li><p>{actualWeatherDetails && actualWeatherDetails.applicable_date}</p></li>
 //                 </ul>
 //             </div>
 //     )

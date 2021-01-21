@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-// import ShowingLists from './ShowingLists';
-// import Search from './Search';
+import ShowingLists from './ShowingLists';
+import Search from './Search';
 
 function App() {
     const [city, setCity] = useState([]);
+    const [Woeid, setWoeid] = useState(44418);
     const [cityTitle, setCityTitle] = useState([]);
     const [inputValue, setInputValue] = useState("london");
-    const [Woeid, setWoeid] = useState(44418);
+    const [converted, setConverted] = useState(false);
     const [weatherDetails, setWeatherDetails] = useState([]);
     const [actualWeatherDetails, setActualWeatherDetails] = useState([]);
+    const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = useState([]);
     
     let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`;
 
@@ -38,30 +40,24 @@ function App() {
             )
         });   
     }, [city])
+
         
     // Fetching the weather details
     async function fetchingWeather() {
         const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
         const response = await newData.json();
         setWeatherDetails(response);
-        setActualWeatherDetails(weatherDetails.consolidated_weather?.[0])
+        setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
+        setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
     }
 
-    console.log(actualWeatherDetails);
-
-    // function ConvertedToCelcius() {
-    //     setConverted(false);
-    // }
+    function ConvertedToCelcius() {
+        setConverted(false);
+    }
     
-    // function ConvertedToFaraneit() {
-    //     setConverted(true)
-    // }
-
-    // function Searchitem(e) {
-    //     e.preventDefault();
-    //     setInputValue(e.target.location.value);
-    //     e.target.reset();
-    // }
+    function ConvertedToFaraneit() {
+        setConverted(true)
+    }
         
     return (
         <div className="container">
@@ -71,17 +67,17 @@ function App() {
          </form>
         <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
             {/* <Search
-                data={data}
-                getWeather={getWeather}
+                city={city}
                 Searchitem={Searchitem}
                 converted={converted}
-                weatherDetails={weatherDetails} 
-            />
-            <ShowingLists 
-                weatherDetails={weatherDetails} 
+                actualWeatherDetails={actualWeatherDetails} 
+            /> */}
+            {/* <ShowingLists 
                 converted={converted}
                 ConvertedToCelcius={ConvertedToCelcius} 
                 ConvertedToFaraneit={ConvertedToFaraneit} 
+                actualWeatherDetails={actualWeatherDetails} 
+                fiveDayslWeatherDetails={fiveDayslWeatherDetails}
             /> */}
         </div>
 

@@ -1,12 +1,10 @@
 // import React from 'react'
 
-// function future_weather({weatherDetails}) {
-//     const newData = weatherDetails !== [ ] ? weatherDetails.consolidated_weather : "";
-// 	const newItem = newData?.splice(0, 1);
+// function future_weather({fiveDayslWeatherDetails}) {
 
 //     return (
 //         <div className="wrapper_container">
-// 						{newData &&  newData.map(item => {
+// 						{fiveDayslWeatherDetails &&  fiveDayslWeatherDetails.map(item => {
 // 							const newMaxTemp = Math.round(item.max_temp);
 // 							const newMinTemp = Math.round(item.min_temp);
 // 							const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`
