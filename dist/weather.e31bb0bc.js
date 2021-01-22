@@ -29890,53 +29890,95 @@ function ShowingLists({
 
 var _default = ShowingLists;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./future_weather":"Components/future_weather.js","./actual_weather":"Components/actual_weather.js"}],"Components/Search.js":[function(require,module,exports) {
-// import React from 'react';
-// import Form from './Form';
-// function Search(city, Searchitem, converted, actualWeatherDetails) {
-//     const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualWeatherDetails !== undefined ? actualWeatherDetails.weather_state_abbr : ""}.svg`;
-//     function OpenToggle() {
-//         const menuDrawer = document.querySelector(".menu-drawer");
-//         menuDrawer.className += " open";
-//     };
-//     function CloseToggle() {
-//         const menuDrawer = document.querySelector(".menu-drawer");
-//         menuDrawer.classList.remove("open");
-//     };
-//     const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9/5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
-//     {/* °C , °F*/}
-//     return (
-//         <div className="search_container">
-//                 <div className="container">
-//                     <button className="toggle-menu search" onClick={OpenToggle}>Search for places</button>
-//                     <div className="menu-drawer">
-//                         <Form Searchitem={Searchitem} CloseToggle={CloseToggle}/>
-//                     </div>
-//                 </div>
-//                 <div className="title">
-//                     {city && city.map(location => {
-//                         return (
-//                             <button
-//                                 key={location.woeid}
-//                                 onClick={getWeather}
-//                                 value={location.woeid}
-//                                 >
-//                                     {location.title}
-//                             </button>
-//                         )
-//                     })}
-//                 </div>
-//                 <ul className="actual_weather_details">
-//                     <li><img src={weatherPicture} /></li>
-//                     <li><p>{temperature}</p></li>
-//                     <li><span>{actualWeatherDetails && actualWeatherDetails.weather_state_name}</span></li>
-//                     <li><p>{actualWeatherDetails && actualWeatherDetails.applicable_date}</p></li>
-//                 </ul>
-//             </div>
-//     )
-// }
-// export default Search
-},{}],"Components/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./future_weather":"Components/future_weather.js","./actual_weather":"Components/actual_weather.js"}],"Components/Form.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Form({
+  Searchitem,
+  CloseToggle
+}) {
+  return /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit",
+    onClick: CloseToggle
+  }, "Search"));
+}
+
+var _default = Form;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Form = _interopRequireDefault(require("./Form"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Search(cityTitle, Searchitem, fetchingWeather, converted, actualWeatherDetails) {
+  const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualWeatherDetails !== undefined ? actualWeatherDetails.weather_state_abbr : ""}.svg`;
+
+  function OpenToggle() {
+    const menuDrawer = document.querySelector(".menu-drawer");
+    menuDrawer.className += " open";
+  }
+
+  ;
+
+  function CloseToggle() {
+    const menuDrawer = document.querySelector(".menu-drawer");
+    menuDrawer.classList.remove("open");
+  }
+
+  ;
+  const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9 / 5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
+  {
+    /* °C , °F*/
+  }
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "search_container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "toggle-menu search",
+    type: "button",
+    onClick: OpenToggle
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "menu-drawer"
+  }, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    Searchitem: Searchitem,
+    CloseToggle: CloseToggle
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "title"
+  }), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "actual_weather_details"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: weatherPicture
+  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, temperature)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualWeatherDetails && actualWeatherDetails.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualWeatherDetails && actualWeatherDetails.applicable_date))));
+}
+
+var _default = Search;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./Form":"Components/Form.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30008,18 +30050,13 @@ function App() {
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: fetchingWeather
-  }, cityTitle));
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
+    cityTitle: cityTitle,
+    Searchitem: Searchitem,
+    fetchingWeather: fetchingWeather,
+    converted: converted,
+    actualWeatherDetails: actualWeatherDetails
+  }));
 }
 
 var _default = App; // const [actualWeather, setActualWeather] = useState();
@@ -30068,7 +30105,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49503" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49682" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

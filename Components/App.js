@@ -61,17 +61,13 @@ function App() {
         
     return (
         <div className="container">
-            <form onSubmit={Searchitem}>
-                <input type="text" name="location" required/>
-             <button type="submit">Search</button>
-         </form>
-        <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
-            {/* <Search
-                city={city}
+            <Search
+                cityTitle={cityTitle}
                 Searchitem={Searchitem}
+                fetchingWeather={fetchingWeather}
                 converted={converted}
                 actualWeatherDetails={actualWeatherDetails} 
-            /> */}
+            />
             {/* <ShowingLists 
                 converted={converted}
                 ConvertedToCelcius={ConvertedToCelcius} 
