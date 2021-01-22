@@ -29772,213 +29772,40 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/future_weather.js":[function(require,module,exports) {
-// import React from 'react'
-// function future_weather({fiveDayslWeatherDetails}) {
+},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/Search.js":[function(require,module,exports) {
+// import React from 'react';
+// function Search(cityTitle, Searchitem, fetchingWeather, converted, actualWeatherDetails) {
+//     // const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9/5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
+//     {/* °C , °F*/}
 //     return (
-//         <div className="wrapper_container">
-// 						{fiveDayslWeatherDetails &&  fiveDayslWeatherDetails.map(item => {
-// 							const newMaxTemp = Math.round(item.max_temp);
-// 							const newMinTemp = Math.round(item.min_temp);
-// 							const weatherLogo = `https://www.metaweather.com//static/img/weather/${item.weather_state_abbr}.svg`
-// 							return (
-// 								<ul key={item.id} className="wrapper">
-// 									<li>{item.applicable_date}</li>
-// 									<li><img src={weatherLogo} /></li>
-// 									<li>
-// 										<ul>
-// 											<li>{newMaxTemp}</li>
-// 											<li>{newMinTemp}</li>
-// 										</ul>
-// 									</li>
-// 								</ul>
-// 							)
-// 						})}
-// 					</div>
+//         <div className="search_container">
+//                 <div className="container">
+//                     <button className="toggle-menu search" type="button">Search for places</button>
+//                     <div className="menu-drawer">
+//                         <form onSubmit={Searchitem}>
+//                             <input type="text" name="location" required/>
+//                             <button type="button">Search</button>
+//                         </form>
+//                     </div>
+//                 </div>
+//                 <ul className="actual_weather_details">
+//                     {/* <li><img src={`https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`}/></li> */}
+//                     <li><span>{actualWeatherDetails && actualWeatherDetails.weather_state_name}</span></li>
+//                     <li><p>{actualWeatherDetails && actualWeatherDetails.applicable_date}</p></li>
+//                 </ul>
+//             </div>
 //     )
 // }
-// export default future_weather
-},{}],"Components/actual_weather.js":[function(require,module,exports) {
-// import React from 'react'
-// function actual_weather({actualWeatherDetails}) {
-//     return (
-//         <div className="actual_weather">
-// 						<h2>Today's Highlight</h2>
-// 						<ul>
-// 							<li>
-// 								<ul>
-// 									<li><h3>Wind status</h3>	</li>
-// 									<li>{Math.round(actualWeatherDetails && actualWeatherDetails.wind_direction)} <span>mph</span></li>
-// 									<li>{actualWeatherDetails && actualWeatherDetails.wind_direction_compass}</li>
-// 								</ul>
-// 							</li>
-// 							<li>
-// 								<ul>
-// 									<li><h3><label htmlFor="humidity">Humidity</label></h3></li>
-// 									<li>{Math.round(actualWeatherDetails && actualWeatherDetails.humidity)} <span>%</span></li>
-// 									<li><progress id="humidity" max="100" value={actualWeatherDetails && actualWeatherDetails.humidity}>{actualWeatherDetails && actualWeatherDetails.humidity}%</progress></li>
-// 								</ul>
-// 							</li>
-// 							<li>
-// 								<ul>
-// 									<li><h3>Visibility</h3></li>
-// 									<li>{Math.round(actualWeatherDetails && actualWeatherDetails.visibility)} <span>miles</span></li>
-// 								</ul>
-// 							</li>
-// 							<li>
-// 								<ul>
-// 									<li><h3>Air pressure</h3></li>
-// 									<li>{actualWeatherDetails && actualWeatherDetails.air_pressure} <span>mb</span></li>
-// 								</ul>
-// 							</li>
-// 						</ul>
-// 					</div>
-//     )
-// }
-// export default actual_weather
-},{}],"Components/ShowingLists.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _future_weather = _interopRequireDefault(require("./future_weather"));
-
-var _actual_weather = _interopRequireDefault(require("./actual_weather"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import dateFormat from 'dateformat';
-function ShowingLists({
-  fiveDayslWeatherDetails,
-  ConvertedToCelcius,
-  ConvertedToFaraneit,
-  actualWeatherDetails
-}) {
-  // function DateFormat(date) {
-  // 	const day = ['Sun', 'Mon','Tue','Wed','Thu','Fri','Sat']   
-  // 	const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'] 
-  // 	let dateFormat = new Date(date)
-  // 	let newDay = day[dateFormat.getDay()]
-  // 	let newDate = dateFormat.getDate()
-  // 	let newMonth = month[dateFormat.getMonth()]
-  // 	return `${newDay}, ${newDate} ${newMonth}`
-  // }
-  // DateFormat();
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "showinglists_container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "sub_container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "degree_button"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: ConvertedToCelcius
-  }, "Celcius"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: ConvertedToFaraneit
-  }, "Faraneit")), /*#__PURE__*/_react.default.createElement(_future_weather.default, {
-    fiveDayslWeatherDetails: fiveDayslWeatherDetails
-  }), /*#__PURE__*/_react.default.createElement(_actual_weather.default, {
-    actualWeatherDetails: actualWeatherDetails
-  }))));
-}
-
-var _default = ShowingLists;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./future_weather":"Components/future_weather.js","./actual_weather":"Components/actual_weather.js"}],"Components/Form.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Form({
-  Searchitem,
-  CloseToggle
-}) {
-  return /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit",
-    onClick: CloseToggle
-  }, "Search"));
-}
-
-var _default = Form;
-exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/Search.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Form = _interopRequireDefault(require("./Form"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Search(cityTitle, Searchitem, fetchingWeather, converted, actualWeatherDetails) {
-  const weatherPicture = `https://www.metaweather.com//static/img/weather/${actualWeatherDetails !== undefined ? actualWeatherDetails.weather_state_abbr : ""}.svg`;
-
-  function OpenToggle() {
-    const menuDrawer = document.querySelector(".menu-drawer");
-    menuDrawer.className += " open";
-  }
-
-  ;
-
-  function CloseToggle() {
-    const menuDrawer = document.querySelector(".menu-drawer");
-    menuDrawer.classList.remove("open");
-  }
-
-  ;
-  const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9 / 5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
-  {
-    /* °C , °F*/
-  }
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "toggle-menu search",
-    type: "button",
-    onClick: OpenToggle
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "menu-drawer"
-  }, /*#__PURE__*/_react.default.createElement(_Form.default, {
-    Searchitem: Searchitem,
-    CloseToggle: CloseToggle
-  }))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "title"
-  }), /*#__PURE__*/_react.default.createElement("ul", {
-    className: "actual_weather_details"
-  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: weatherPicture
-  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, temperature)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualWeatherDetails && actualWeatherDetails.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualWeatherDetails && actualWeatherDetails.applicable_date))));
-}
-
-var _default = Search;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","./Form":"Components/Form.js"}],"Components/App.js":[function(require,module,exports) {
+// export default Search
+// // function OpenToggle() {
+// //     const menuDrawer = document.querySelector(".menu-drawer");
+// //     menuDrawer.className += " open";
+// // };
+// // function CloseToggle() {
+// //     const menuDrawer = document.querySelector(".menu-drawer");
+// //     menuDrawer.classList.remove("open");
+// // };
+},{}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29987,8 +29814,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
-
-var _ShowingLists = _interopRequireDefault(require("./ShowingLists"));
 
 var _Search = _interopRequireDefault(require("./Search"));
 
@@ -30000,10 +29825,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function App() {
   const [city, setCity] = (0, _react.useState)([]);
-  const [Woeid, setWoeid] = (0, _react.useState)(44418);
+  const [Woeid, setWoeid] = (0, _react.useState)(44418); // const [loading, setLoadign] = useState(true);
+
   const [cityTitle, setCityTitle] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)("london");
-  const [converted, setConverted] = (0, _react.useState)(false);
   const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
   const [actualWeatherDetails, setActualWeatherDetails] = (0, _react.useState)([]);
   const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = (0, _react.useState)([]);
@@ -30038,34 +29863,28 @@ function App() {
     setWeatherDetails(response);
     setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
     setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
-  }
-
-  function ConvertedToCelcius() {
-    setConverted(false);
-  }
-
-  function ConvertedToFaraneit() {
-    setConverted(true);
+    actualWeatherDetails && console.log(actualWeatherDetails);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
-    cityTitle: cityTitle,
-    Searchitem: Searchitem,
-    fetchingWeather: fetchingWeather,
-    converted: converted,
-    actualWeatherDetails: actualWeatherDetails
-  }));
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: Searchitem
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "location",
+    required: true
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: fetchingWeather
+  }, cityTitle), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, actualWeatherDetails.humidity))));
 }
 
-var _default = App; // const [actualWeather, setActualWeather] = useState();
-// const [converted, setConverted] = useState(false);
-// const newWeather = weatherDetails.consolidated_weather && weatherDetails.consolidated_weather.splice(0, 1);
-// console.log(newWeather);
-
+var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./ShowingLists":"Components/ShowingLists.js","./Search":"Components/Search.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Search":"Components/Search.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30105,7 +29924,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49682" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61806" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

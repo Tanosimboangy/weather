@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ShowingLists from './ShowingLists';
 import Search from './Search';
 
 function App() {
     const [city, setCity] = useState([]);
     const [Woeid, setWoeid] = useState(44418);
+    // const [loading, setLoadign] = useState(true);
     const [cityTitle, setCityTitle] = useState([]);
     const [inputValue, setInputValue] = useState("london");
-    const [converted, setConverted] = useState(false);
     const [weatherDetails, setWeatherDetails] = useState([]);
     const [actualWeatherDetails, setActualWeatherDetails] = useState([]);
     const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = useState([]);
@@ -49,42 +48,31 @@ function App() {
         setWeatherDetails(response);
         setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
         setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
+        actualWeatherDetails && console.log(actualWeatherDetails);
     }
 
-    function ConvertedToCelcius() {
-        setConverted(false);
-    }
     
-    function ConvertedToFaraneit() {
-        setConverted(true)
-    }
-        
     return (
         <div className="container">
-            <Search
-                cityTitle={cityTitle}
-                Searchitem={Searchitem}
-                fetchingWeather={fetchingWeather}
-                converted={converted}
-                actualWeatherDetails={actualWeatherDetails} 
-            />
-            {/* <ShowingLists 
-                converted={converted}
-                ConvertedToCelcius={ConvertedToCelcius} 
-                ConvertedToFaraneit={ConvertedToFaraneit} 
-                actualWeatherDetails={actualWeatherDetails} 
-                fiveDayslWeatherDetails={fiveDayslWeatherDetails}
-            /> */}
+            <form onSubmit={Searchitem}>
+                 <input type="text" name="location" required/>
+                 <button type="submit">Search</button>
+             </form>
+            <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
+            <div>
+                <ul>
+                    <li>{actualWeatherDetails.humidity}</li>
+                    {/* humidity: 73
+id: 6140791668867072
+max_temp: 6.970000000000001
+min_temp: 1.405
+predictability: 68
+the_temp: 6.05 */}
+                </ul>
+            </div>
         </div>
 
-    )
+)
 }
 
 export default App;
-
-
-// const [actualWeather, setActualWeather] = useState();
-// const [converted, setConverted] = useState(false);
-
-// const newWeather = weatherDetails.consolidated_weather && weatherDetails.consolidated_weather.splice(0, 1);
-// console.log(newWeather);
