@@ -29772,40 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/Search.js":[function(require,module,exports) {
-// import React from 'react';
-// function Search(cityTitle, Searchitem, fetchingWeather, converted, actualWeatherDetails) {
-//     // const temperature = converted === true ? actualWeatherDetails && Math.round(actualWeatherDetails.the_temp) * 9/5 + 32 : actualWeatherDetails && Math.round(actualWeatherDetails.the_temp);
-//     {/* °C , °F*/}
-//     return (
-//         <div className="search_container">
-//                 <div className="container">
-//                     <button className="toggle-menu search" type="button">Search for places</button>
-//                     <div className="menu-drawer">
-//                         <form onSubmit={Searchitem}>
-//                             <input type="text" name="location" required/>
-//                             <button type="button">Search</button>
-//                         </form>
-//                     </div>
-//                 </div>
-//                 <ul className="actual_weather_details">
-//                     {/* <li><img src={`https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`}/></li> */}
-//                     <li><span>{actualWeatherDetails && actualWeatherDetails.weather_state_name}</span></li>
-//                     <li><p>{actualWeatherDetails && actualWeatherDetails.applicable_date}</p></li>
-//                 </ul>
-//             </div>
-//     )
-// }
-// export default Search
-// // function OpenToggle() {
-// //     const menuDrawer = document.querySelector(".menu-drawer");
-// //     menuDrawer.className += " open";
-// // };
-// // function CloseToggle() {
-// //     const menuDrawer = document.querySelector(".menu-drawer");
-// //     menuDrawer.classList.remove("open");
-// // };
-},{}],"Components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/React-dom/cjs/react-dom.development.js"}],"Components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29815,55 +29782,48 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Search = _interopRequireDefault(require("./Search"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function App() {
   const [city, setCity] = (0, _react.useState)([]);
-  const [Woeid, setWoeid] = (0, _react.useState)(44418); // const [loading, setLoadign] = useState(true);
-
+  const [Woeid, setWoeid] = (0, _react.useState)(44418);
   const [cityTitle, setCityTitle] = (0, _react.useState)([]);
   const [inputValue, setInputValue] = (0, _react.useState)("london");
   const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
   const [actualWeatherDetails, setActualWeatherDetails] = (0, _react.useState)([]);
   const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = (0, _react.useState)([]);
-  let NEW_API = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`;
 
   function Searchitem(e) {
     e.preventDefault();
     setInputValue(e.target.location.value);
     e.target.reset();
-  } // Fetching the cityname
+  }
 
-
-  async function fetchingCity() {
-    const Data = await fetch(NEW_API);
-    const res = await Data.json();
+  function fetchingCity() {
+    const datas = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
+    const res = datas.json();
     setCity(res);
   }
 
   (0, _react.useEffect)(() => {
     fetchingCity();
-  }, [inputValue]); // Accessing the woied from the city location and store it in a state
-
+  }, [inputValue]);
   (0, _react.useEffect)(() => {
-    const newWoeid = city && city.map(item => {
+    const newWoeid = city.map(item => {
       return setWoeid(item.woeid), setCityTitle(item.title);
     });
-  }, [city]); // Fetching the weather details
+  }, [city]);
 
-  async function fetchingWeather() {
-    const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-    const response = await newData.json();
+  function fetchingWeather() {
+    const newData = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+    const response = newData.json();
     setWeatherDetails(response);
     setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
     setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
-    actualWeatherDetails && console.log(actualWeatherDetails);
+    console.log(actualWeatherDetails);
+    console.log(fiveDayslWeatherDetails);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29879,12 +29839,12 @@ function App() {
   }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: fetchingWeather
-  }, cityTitle), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, actualWeatherDetails.humidity))));
+  }, cityTitle));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Search":"Components/Search.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29924,7 +29884,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61806" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62837" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
