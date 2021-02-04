@@ -14,35 +14,44 @@ function App() {
         setInputValue(e.target.location.value)
         e.target.reset();
     }
+     
     
-    function fetchingCity() {
-        const datas = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
-        const res = datas.json();
-        setCity(res);
+    async function fetchingCity() { 
+        const datas = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
+        const res = await datas.json();
+        setCity(res); 
     }
 
     useEffect(() => {
         fetchingCity();
     }, [inputValue]);
+ 
 
-    useEffect(() => {
+    useEffect(() => { 
         const newWoeid = city.map(item => {
             return (
                 setWoeid(item.woeid),
                 setCityTitle(item.title)
             )
         });   
-    }, [city])
+    }, [city, inputValue]);
 
-    function fetchingWeather() {
-        const newData = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-        const response = newData.json();
-        setWeatherDetails(response);
-        setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
-        setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
-        console.log(actualWeatherDetails);
-        console.log(fiveDayslWeatherDetails);
+    console.log(Woeid)
+
+    async function fetchingWeather() {
+        const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+        const res = await newData.json();
+        setWeatherDetails(res);
+        if (weatherDetails !== []) {
+            setActualWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.[0]);
+            setFiveDaysWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.splice(1));
+            console.log(actualWeatherDetails);
+            console.log(fiveDayslWeatherDetails);
+        }
     }
+    useEffect(() => {
+        fetchingWeather();
+    }, [Woeid])
 
     
     return (

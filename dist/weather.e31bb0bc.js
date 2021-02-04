@@ -29801,9 +29801,9 @@ function App() {
     e.target.reset();
   }
 
-  function fetchingCity() {
-    const datas = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
-    const res = datas.json();
+  async function fetchingCity() {
+    const datas = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
+    const res = await datas.json();
     setCity(res);
   }
 
@@ -29814,18 +29814,25 @@ function App() {
     const newWoeid = city.map(item => {
       return setWoeid(item.woeid), setCityTitle(item.title);
     });
-  }, [city]);
+  }, [city, inputValue]);
+  console.log(Woeid);
 
-  function fetchingWeather() {
-    const newData = fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-    const response = newData.json();
-    setWeatherDetails(response);
-    setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
-    setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
-    console.log(actualWeatherDetails);
-    console.log(fiveDayslWeatherDetails);
+  async function fetchingWeather() {
+    const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+    const res = await newData.json();
+    setWeatherDetails(res);
+
+    if (weatherDetails !== []) {
+      setActualWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.[0]);
+      setFiveDaysWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.splice(1));
+      console.log(actualWeatherDetails);
+      console.log(fiveDayslWeatherDetails);
+    }
   }
 
+  (0, _react.useEffect)(() => {
+    fetchingWeather();
+  }, [Woeid]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("form", {
@@ -29884,7 +29891,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62837" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63741" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
