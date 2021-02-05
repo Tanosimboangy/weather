@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Search from "./Search"
 
 function App() {
     const [city, setCity] = useState([]);
@@ -15,7 +16,6 @@ function App() {
         e.target.reset();
     }
      
-    
     async function fetchingCity() { 
         const datas = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
         const res = await datas.json();
@@ -25,42 +25,48 @@ function App() {
     useEffect(() => {
         fetchingCity();
     }, [inputValue]);
- 
-
+    
     useEffect(() => { 
         const newWoeid = city.map(item => {
             return (
                 setWoeid(item.woeid),
                 setCityTitle(item.title)
             )
-        });   
-    }, [city, inputValue]);
-
-    console.log(Woeid)
-
+        });
+    }, [city]);
+    
     async function fetchingWeather() {
         const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
-        const res = await newData.json();
+        const res = await newData.json(); 
         setWeatherDetails(res);
-        if (weatherDetails !== []) {
-            setActualWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.[0]);
-            setFiveDaysWeatherDetails(weatherDetails && weatherDetails.consolidated_weather?.splice(1));
-            console.log(actualWeatherDetails);
-            console.log(fiveDayslWeatherDetails);
-        }
     }
+
     useEffect(() => {
         fetchingWeather();
-    }, [Woeid])
+    }, [inputValue])
 
+    useEffect(() => {
+        setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
+        setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
+    }, [weatherDetails])
     
     return (
-        <div className="container">
-            <form onSubmit={Searchitem}>
-                 <input type="text" name="location" required/>
-                 <button type="submit">Search</button>
-             </form>
-            <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
+        <div className="search_container">
+            <div className="container">
+                <form onSubmit={Searchitem} className="menu_drawer">
+                    <input type="text" name="location" required/>
+                    <button type="submit">Search</button>
+                </form>
+                <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
+            </div>
+            {
+                actualWeatherDetails !== undefined ?  
+                <ul className="actual_weather_details">
+                    <li><img src={`https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`}/></li>
+                    <li><span>{actualWeatherDetails.weather_state_name}</span></li>
+                    <li><p>{actualWeatherDetails.applicable_date}</p></li>
+                </ul> : ""
+            }
         </div>
     )
 }
