@@ -29788,21 +29788,23 @@ function Search({
   cityTitle,
   Searchitem,
   fetchingWeather,
-  inputValue,
   actualWeatherDetails
 }) {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "search"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "toggle_btn"
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: Searchitem,
-    className: "menu_drawer"
+    className: "toggle_search"
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "location",
     required: true
   }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "submit_button",
     type: "submit"
   }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
@@ -29885,27 +29887,12 @@ function App() {
     setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
     setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice(1));
   }, [weatherDetails]);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "search_container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Searchitem,
-    className: "menu_drawer"
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    name: "location",
-    required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit"
-  }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: fetchingWeather
-  }, cityTitle)), actualWeatherDetails !== undefined ? /*#__PURE__*/_react.default.createElement("ul", {
-    className: "actual_weather_details"
-  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: `https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`
-  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualWeatherDetails.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualWeatherDetails.applicable_date))) : "");
+  return /*#__PURE__*/_react.default.createElement(_Search.default, {
+    cityTitle: cityTitle,
+    Searchitem: Searchitem,
+    fetchingWeather: fetchingWeather,
+    actualWeatherDetails: actualWeatherDetails
+  });
 }
 
 var _default = App;
@@ -29950,7 +29937,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61725" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63212" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
