@@ -29790,10 +29790,15 @@ function Search({
   fetchingWeather,
   actualWeatherDetails
 }) {
+  function showSearch() {
+    console.log("I am here");
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "toggle_btn"
+    className: "toggle_btn",
+    onClick: showSearch
   }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("form", {
@@ -29809,11 +29814,11 @@ function Search({
   }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: fetchingWeather
-  }, cityTitle)), actualWeatherDetails !== undefined ? /*#__PURE__*/_react.default.createElement("ul", {
+  }, cityTitle)), actualWeatherDetails === undefined ? /*#__PURE__*/_react.default.createElement("h1", null, "Loading ...") : /*#__PURE__*/_react.default.createElement("ul", {
     className: "actual_weather_details"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: `https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`
-  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualWeatherDetails.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualWeatherDetails.applicable_date))) : "");
+    src: `https://www.metaweather.com//static/img/weather/${actualWeatherDetails.weather_state_abbr}.svg`
+  })), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, actualWeatherDetails.weather_state_name)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, actualWeatherDetails.applicable_date)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, cityTitle))));
 }
 
 var _default = Search; // function OpenToggle() {
@@ -29848,7 +29853,7 @@ function App() {
   const [city, setCity] = (0, _react.useState)([]);
   const [Woeid, setWoeid] = (0, _react.useState)(44418);
   const [cityTitle, setCityTitle] = (0, _react.useState)([]);
-  const [inputValue, setInputValue] = (0, _react.useState)("london");
+  const [inputValue, setInputValue] = (0, _react.useState)("London");
   const [weatherDetails, setWeatherDetails] = (0, _react.useState)([]);
   const [actualWeatherDetails, setActualWeatherDetails] = (0, _react.useState)([]);
   const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = (0, _react.useState)([]);
@@ -29868,6 +29873,7 @@ function App() {
   (0, _react.useEffect)(() => {
     fetchingCity();
   }, [inputValue]);
+  console.log(city);
   (0, _react.useEffect)(() => {
     const newWoeid = city.map(item => {
       return setWoeid(item.woeid), setCityTitle(item.title);
@@ -29937,7 +29943,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63212" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52243" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

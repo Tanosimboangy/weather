@@ -5,7 +5,7 @@ function App() {
     const [city, setCity] = useState([]);
     const [Woeid, setWoeid] = useState(44418);
     const [cityTitle, setCityTitle] = useState([]);
-    const [inputValue, setInputValue] = useState("london");
+    const [inputValue, setInputValue] = useState("London");
     const [weatherDetails, setWeatherDetails] = useState([]);
     const [actualWeatherDetails, setActualWeatherDetails] = useState([]);
     const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = useState([]);
@@ -21,11 +21,12 @@ function App() {
         const res = await datas.json();
         setCity(res); 
     }
-
+    
     useEffect(() => {
         fetchingCity();
     }, [inputValue]);
-    
+    console.log(city);
+
     useEffect(() => { 
         const newWoeid = city.map(item => {
             return (

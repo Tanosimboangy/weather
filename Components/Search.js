@@ -2,9 +2,13 @@ import React from 'react';
 
 function Search({cityTitle, Searchitem, fetchingWeather, actualWeatherDetails}) {
 
+    function showSearch() {
+        console.log("I am here");
+    }
+
     return (
         <div className="search">
-            <button className="toggle_btn">Search for places</button>
+            <button className="toggle_btn" onClick={showSearch}>Search for places</button>
             <div className="container">
                 <form onSubmit={Searchitem} className="toggle_search">
                     <input type="text" name="location" required/>
@@ -13,12 +17,14 @@ function Search({cityTitle, Searchitem, fetchingWeather, actualWeatherDetails}) 
                 <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
             </div>
             {
-                actualWeatherDetails !== undefined ?  
+                actualWeatherDetails === undefined ?
+                <h1>Loading ...</h1> :
                 <ul className="actual_weather_details">
-                    <li><img src={`https://www.metaweather.com//static/img/weather/${actualWeatherDetails && actualWeatherDetails.weather_state_abbr}.svg`}/></li>
+                    <li><img src={`https://www.metaweather.com//static/img/weather/${actualWeatherDetails.weather_state_abbr}.svg`}/></li>
                     <li><span>{actualWeatherDetails.weather_state_name}</span></li>
                     <li><p>{actualWeatherDetails.applicable_date}</p></li>
-                </ul> : ""
+                    <li><p>{cityTitle}</p></li>
+                </ul>
             }
         </div>
     )

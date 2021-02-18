@@ -28,6 +28,7 @@ body button {
 
 .search {
   background: #1E213A;
+  position: relative;
 }
 .search .toggle_btn {
   margin-top: 18px;
@@ -45,12 +46,45 @@ body button {
   margin-bottom: 76px;
 }
 .search .container {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  background: #1E213A;
+}
+.search .actual_weather_details {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 105px;
+}
+.search .actual_weather_details li {
+  color: white;
+  font-style: normal;
 }
 .search .actual_weather_details li:first-of-type img {
-  width: 35%;
+  width: 100%;
+  margin-bottom: 23px;
+}
+.search .actual_weather_details li:nth-of-type(2) {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  color: #A09FB1;
+  margin-bottom: 48px;
+}
+.search .actual_weather_details li:nth-of-type(3) {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869D;
+  margin-bottom: 33px;
+}
+.search .actual_weather_details li:nth-of-type(4) {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869D;
 }
 
 /*# sourceMappingURL=/weather.80ee2152.css.map */
