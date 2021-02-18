@@ -29780,9 +29780,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Search({
   cityTitle,
@@ -29790,8 +29792,10 @@ function Search({
   fetchingWeather,
   actualWeatherDetails
 }) {
+  const [showForm, setShowForm] = (0, _react.useState)(false);
+
   function showSearch() {
-    console.log("I am here");
+    setShowForm(!showForm);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29799,7 +29803,7 @@ function Search({
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "toggle_btn",
     onClick: showSearch
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+  }, "Search for places"), showForm ? /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: Searchitem,
@@ -29814,7 +29818,7 @@ function Search({
   }, "Search")), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: fetchingWeather
-  }, cityTitle)), actualWeatherDetails === undefined ? /*#__PURE__*/_react.default.createElement("h1", null, "Loading ...") : /*#__PURE__*/_react.default.createElement("ul", {
+  }, cityTitle)) : null, actualWeatherDetails === undefined ? /*#__PURE__*/_react.default.createElement("h1", null, "Loading ...") : /*#__PURE__*/_react.default.createElement("ul", {
     className: "actual_weather_details"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com//static/img/weather/${actualWeatherDetails.weather_state_abbr}.svg`
@@ -29943,7 +29947,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52243" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

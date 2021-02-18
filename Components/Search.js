@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Search({cityTitle, Searchitem, fetchingWeather, actualWeatherDetails}) {
+    const [showForm, setShowForm] = useState(false)
 
     function showSearch() {
-        console.log("I am here");
+        setShowForm(!showForm);
     }
 
     return (
         <div className="search">
             <button className="toggle_btn" onClick={showSearch}>Search for places</button>
-            <div className="container">
-                <form onSubmit={Searchitem} className="toggle_search">
-                    <input type="text" name="location" required/>
-                    <button className="submit_button" type="submit">Search</button>
-                </form>
-                <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
-            </div>
+            {
+                showForm ?
+                <div className="container">
+                    <form onSubmit={Searchitem} className="toggle_search">
+                        <input type="text" name="location" required/>
+                        <button className="submit_button" type="submit">Search</button>
+                    </form>
+                    <button type="button" onClick={fetchingWeather}>{cityTitle}</button>
+                </div> : null
+            }
             {
                 actualWeatherDetails === undefined ?
                 <h1>Loading ...</h1> :
