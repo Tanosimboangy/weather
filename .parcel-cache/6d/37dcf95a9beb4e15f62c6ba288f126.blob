@@ -1,0 +1,26 @@
+var helpers = require("../../../../../usr/local/share/.config/yarn/global/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _react = require('react');
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _ReactDom = require("React-dom");
+  var _ReactDomDefault = _parcelHelpers.interopDefault(_ReactDom);
+  var _ComponentsAppJs = require("./Components/App.js");
+  var _ComponentsAppJsDefault = _parcelHelpers.interopDefault(_ComponentsAppJs);
+  var _jsxFileName = "/home/student/Coding/projects/weather/index.js";
+  _ReactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_ComponentsAppJsDefault.default, {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5,
+      columnNumber: 17
+    }
+  }), document.getElementById("root"));
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

@@ -19,6 +19,7 @@ function App() {
     async function fetchingCity() { 
         const datas = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
         const res = await datas.json();
+        console.log(res);
         setCity(res); 
     }
     
@@ -39,6 +40,7 @@ function App() {
     async function fetchingWeather() {
         const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
         const res = await newData.json(); 
+        console.log(res);
         setWeatherDetails(res);
     }
 

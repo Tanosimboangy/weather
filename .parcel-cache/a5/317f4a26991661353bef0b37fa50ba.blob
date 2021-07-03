@@ -1,0 +1,77 @@
+var helpers = require("../../../../../../usr/local/share/.config/yarn/global/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _Search = require("./Search");
+  var _SearchDefault = _parcelHelpers.interopDefault(_Search);
+  var _jsxFileName = "/home/student/Coding/projects/weather/Components/App.js", _s = $RefreshSig$();
+  function App() {
+    _s();
+    const [city, setCity] = _react.useState([]);
+    const [Woeid, setWoeid] = _react.useState(44418);
+    const [cityTitle, setCityTitle] = _react.useState([]);
+    const [inputValue, setInputValue] = _react.useState("London");
+    const [weatherDetails, setWeatherDetails] = _react.useState([]);
+    const [actualWeatherDetails, setActualWeatherDetails] = _react.useState([]);
+    const [fiveDayslWeatherDetails, setFiveDaysWeatherDetails] = _react.useState([]);
+    function Searchitem(e) {
+      e.preventDefault();
+      setInputValue(e.target.location.value);
+      e.target.reset();
+    }
+    async function fetchingCity() {
+      const datas = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${inputValue}`);
+      const res = await datas.json();
+      setCity(res);
+    }
+    _react.useEffect(() => {
+      fetchingCity();
+    }, [inputValue]);
+    console.log(city);
+    _react.useEffect(() => {
+      const newWoeid = city.map(item => {
+        return (setWoeid(item.woeid), setCityTitle(item.title));
+      });
+    }, [city]);
+    async function fetchingWeather() {
+      const newData = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${Woeid}/`);
+      const res = await newData.json();
+      setWeatherDetails(res);
+    }
+    _react.useEffect(() => {
+      fetchingWeather();
+    }, [inputValue]);
+    _react.useEffect(() => {
+      setActualWeatherDetails(weatherDetails.consolidated_weather?.[0]);
+      setFiveDaysWeatherDetails(weatherDetails.consolidated_weather?.splice?.(1));
+    }, [weatherDetails]);
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement(_SearchDefault.default, {
+        cityTitle: cityTitle,
+        Searchitem: Searchitem,
+        fetchingWeather: fetchingWeather,
+        actualWeatherDetails: actualWeatherDetails,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55,
+          columnNumber: 9
+        }
+      })
+    );
+  }
+  _s(App, "7jdGzNf2dN4f+0B4CBEvLHEUcLs=");
+  _c = App;
+  exports.default = App;
+  var _c;
+  $RefreshReg$(_c, "App");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

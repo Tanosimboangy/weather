@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -144,12 +144,12 @@ function getBundleURL() {
 }
 
 function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
 }
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts\\Raleway_Regular.woff2":[["Raleway_Regular.71e6a38d.woff2","fonts/Raleway_Regular.woff2"],"fonts/Raleway_Regular.woff2"],"./fonts\\Raleway_Regular.woff":[["Raleway_Regular.8a5dbe51.woff","fonts/Raleway_Regular.woff"],"fonts/Raleway_Regular.woff"],"./fonts\\Raleway_Bold.woff2":[["Raleway_Bold.7bdd32a7.woff2","fonts/Raleway_Bold.woff2"],"fonts/Raleway_Bold.woff2"],"./fonts\\Raleway_Bold.woff":[["Raleway_Bold.a868e6a3.woff","fonts/Raleway_Bold.woff"],"fonts/Raleway_Bold.woff"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./fonts/Raleway_Regular.woff2":[["Raleway_Regular.71e6a38d.woff2","fonts/Raleway_Regular.woff2"],"fonts/Raleway_Regular.woff2"],"./fonts/Raleway_Regular.woff":[["Raleway_Regular.8a5dbe51.woff","fonts/Raleway_Regular.woff"],"fonts/Raleway_Regular.woff"],"./fonts/Raleway_Bold.woff2":[["Raleway_Bold.7bdd32a7.woff2","fonts/Raleway_Bold.woff2"],"fonts/Raleway_Bold.woff2"],"./fonts/Raleway_Bold.woff":[["Raleway_Bold.a868e6a3.woff","fonts/Raleway_Bold.woff"],"fonts/Raleway_Bold.woff"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42483" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -393,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
 //# sourceMappingURL=/weather.80ee2152.js.map
