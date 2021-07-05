@@ -31815,33 +31815,8 @@ const SearchContainer = _styledComponents.default.div`
 const ToggleBtn = _styledComponents.default.button`
     // font-family: Raleway;
     padding: 11px 18px;
-
-    // margin-top: 18px;
-    // margin-left: 11px;
-    // box-sizing: border-box;
-    // border: none;
-    // color: #E7E7EB;
-    // font-style: normal;
-    // font-weight: 500;
-    // font-size: 16px;
-    // line-height: 19px;
-    -tw-bg-opacity: 1;
-    background-color: rgba(136,134,157,var(--tw-bg-opacity));
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 76px;
-    border-radius: .125rem;
-`;
-const FormContainer = _styledComponents.default.div`
-    position: absolute;
-    top: 0;
-    left: -300px;
-    background: #1E213A;
-`;
-const CloseToggleBtn = _styledComponents.default.button`
-     // font-family: Raleway;
     margin-top: 18px;
     margin-left: 11px;
-    padding: 11px 18px;
     box-sizing: border-box;
     border: none;
     color: #E7E7EB;
@@ -31849,9 +31824,29 @@ const CloseToggleBtn = _styledComponents.default.button`
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    background: #6E707A;
+    background-color: rgba(136,134,157);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 76px;
+    border-radius: .125rem;
+    cursor: pointer;
+`;
+const FormContainer = _styledComponents.default.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1E213A;
+`;
+const CloseToggleBtn = _styledComponents.default.button`
+    border: none;
+    cursor: pointer;
+    margin-top: 18px;
+    margin-left: 11px;
+    background: #1E213A;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 40px;
+    line-height: 44px;
+    color: rgb(231,231,235);
 `;
 const Form = _styledComponents.default.form``;
 const Input = _styledComponents.default.input``;
@@ -31909,14 +31904,13 @@ function Search({
     onClick: showSearch
   }, "Search for places"), showForm ? /*#__PURE__*/_react.default.createElement(FormContainer, null, /*#__PURE__*/_react.default.createElement(CloseToggleBtn, {
     onClick: showSearch
-  }, "Close"), /*#__PURE__*/_react.default.createElement(Form, {
+  }, "X"), /*#__PURE__*/_react.default.createElement(Form, {
     onSubmit: Searchitem
   }, /*#__PURE__*/_react.default.createElement(Input, {
     type: "text",
     name: "location",
     required: true
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "submit_button",
+  }), /*#__PURE__*/_react.default.createElement(SubmitBtn, {
     type: "submit"
   }, "Search")), /*#__PURE__*/_react.default.createElement(SubmitBtn, {
     type: "button",
@@ -32052,7 +32046,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42483" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36093" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

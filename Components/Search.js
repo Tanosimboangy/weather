@@ -8,33 +8,8 @@ const SearchContainer = styled.div`
 const ToggleBtn = styled.button`
     // font-family: Raleway;
     padding: 11px 18px;
-
-    // margin-top: 18px;
-    // margin-left: 11px;
-    // box-sizing: border-box;
-    // border: none;
-    // color: #E7E7EB;
-    // font-style: normal;
-    // font-weight: 500;
-    // font-size: 16px;
-    // line-height: 19px;
-    -tw-bg-opacity: 1;
-    background-color: rgba(136,134,157,var(--tw-bg-opacity));
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 76px;
-    border-radius: .125rem;
-`
-const FormContainer = styled.div`
-    position: absolute;
-    top: 0;
-    left: -300px;
-    background: #1E213A;
-`
-const CloseToggleBtn = styled.button`
-     // font-family: Raleway;
     margin-top: 18px;
     margin-left: 11px;
-    padding: 11px 18px;
     box-sizing: border-box;
     border: none;
     color: #E7E7EB;
@@ -42,9 +17,29 @@ const CloseToggleBtn = styled.button`
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;
-    background: #6E707A;
+    background-color: rgba(136,134,157);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 76px;
+    border-radius: .125rem;
+    cursor: pointer;
+`
+const FormContainer = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #1E213A;
+`
+const CloseToggleBtn = styled.button`
+    border: none;
+    cursor: pointer;
+    margin-top: 18px;
+    margin-left: 11px;
+    background: #1E213A;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 40px;
+    line-height: 44px;
+    color: rgb(231,231,235);
 `
 const Form = styled.form``
 
@@ -103,10 +98,13 @@ function Search({cityTitle, Searchitem, fetchingWeather, actualWeatherDetails}) 
             {
                 showForm ?
                 <FormContainer>
-                    <CloseToggleBtn onClick={showSearch}>Close</CloseToggleBtn>
+                    <CloseToggleBtn onClick={showSearch}>
+                        X
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="white" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg> */}
+                    </CloseToggleBtn>
                     <Form onSubmit={Searchitem}>
                         <Input type="text" name="location" required/>
-                        <button className="submit_button" type="submit">Search</button>
+                        <SubmitBtn type="submit">Search</SubmitBtn>
                     </Form>
                     <SubmitBtn type="button" onClick={fetchingWeather}>{cityTitle}</SubmitBtn>
                 </FormContainer> : null
