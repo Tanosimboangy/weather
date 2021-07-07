@@ -31809,83 +31809,108 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const SearchContainer = _styledComponents.default.div`
-    background: #1E213A;
-    position: relative;
+  background: #1e213a;
+  position: relative;
 `;
 const ToggleBtn = _styledComponents.default.button`
-    // font-family: Raleway;
-    padding: 11px 18px;
-    margin-top: 18px;
-    margin-left: 11px;
-    box-sizing: border-box;
-    border: none;
-    color: #E7E7EB;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    background-color: rgba(136,134,157);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 76px;
-    border-radius: .125rem;
-    cursor: pointer;
+  // font-family: Raleway;
+  padding: 11px 18px;
+  margin-top: 18px;
+  margin-left: 11px;
+  box-sizing: border-box;
+  border: none;
+  color: #e7e7eb;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  background-color: rgba(136, 134, 157);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 76px;
+  border-radius: 0.125rem;
+  cursor: pointer;
 `;
 const FormContainer = _styledComponents.default.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #1E213A;
+  background: #1e213a;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: ;
 `;
 const CloseToggleBtn = _styledComponents.default.button`
-    border: none;
-    cursor: pointer;
-    margin-top: 18px;
-    margin-left: 11px;
-    background: #1E213A;
-    box-sizing: border-box;
-    padding: 0;
-    font-size: 40px;
-    line-height: 44px;
-    color: rgb(231,231,235);
+  border: none;
+  cursor: pointer;
+  margin-top: 18px;
+  margin-right: 20px;
+  background: #1e213a;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 30px;
+  line-height: 44px;
+  color: rgb(231, 231, 235);
+  position: absolute;
+  right: 0;
+  font-weight: 600;
+  top: 0;
 `;
-const Form = _styledComponents.default.form``;
-const Input = _styledComponents.default.input``;
-const SubmitBtn = _styledComponents.default.button``;
+const Form = _styledComponents.default.form`
+  padding-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+const Input = _styledComponents.default.input`
+  outline: none;
+  background: #1e213a;
+  padding: 8px;
+  border: 2px solid rgba(160, 159, 177);
+`;
+const SubmitBtn = _styledComponents.default.button`
+  margin-left: 8px;
+  background: blue;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 8px 16px;
+`;
 const Loading = _styledComponents.default.h1``;
 const ActualWeatherDetails = _styledComponents.default.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 105px;
-    color: white;
-    // font-family: Raleway;
-    font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 105px;
+  color: white;
+  // font-family: Raleway;
+  font-style: normal;
 `;
 const WeatherImage = _styledComponents.default.img`
-    width: 100%;
-    margin-bottom: 23px;
-    max-width: max-content;
+  width: 100%;
+  margin-bottom: 23px;
+  max-width: max-content;
 `;
 const WeatherName = _styledComponents.default.span`
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 42px;
-    text-align: center;
-    color: #A09FB1;
-    margin-bottom: 48px;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  color: #a09fb1;
+  margin-bottom: 48px;
 `;
 const WeatherDate = _styledComponents.default.p`
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    color: #88869D;
-    margin-bottom: 33px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869d;
+  margin-bottom: 33px;
 `;
 const CityTitle = _styledComponents.default.p`
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
-    color: #88869D;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #88869d;
 `;
 
 function Search({
@@ -32046,7 +32071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36093" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40645" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
